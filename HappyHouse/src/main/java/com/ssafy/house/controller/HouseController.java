@@ -45,7 +45,7 @@ public class HouseController {
 			e.printStackTrace();
 		}
 		
-		return "house/house";
+		return "house/apt";
 	}
 	
 	// 
@@ -64,7 +64,7 @@ public class HouseController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "apt/searchList";
+		return "house/apt";
 	}
 	
 	@RequestMapping(value = "/searchDongName", method = RequestMethod.GET)
@@ -81,7 +81,7 @@ public class HouseController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "apt/searchList";
+		return "house/apt";
 	}
 	
 	@RequestMapping(value = "/searchRes", method = RequestMethod.GET)
@@ -99,7 +99,7 @@ public class HouseController {
 			e.printStackTrace();
 			System.out.println("에러발생");
 		}
-		return "apt/searchResList";
+		return "house/searchResList";
 	}
 	
 	@RequestMapping(value = "/searchResName", method = RequestMethod.GET)
@@ -118,7 +118,7 @@ public class HouseController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "apt/searchResList";
+		return "house/searchResList";
 	}
 	
 	@RequestMapping(value = "/searchResDongName", method = RequestMethod.GET)
@@ -137,7 +137,7 @@ public class HouseController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "apt/searchResList";
+		return "house/searchResList";
 	}
 	
 	
@@ -156,7 +156,7 @@ public class HouseController {
 			System.out.println("에러발생");
 		}
 
-		return "apt/searchResList";
+		return "house/searchResList";
 	}
 	
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
@@ -170,7 +170,7 @@ public class HouseController {
 			e.printStackTrace();
 			request.setAttribute("msg", "상세정보 조회 중 문제가 발생했습니다.");
 		}
-		return "apt/showApt";
+		return "house/showApt";
 	}
 	
 	@RequestMapping(value = "/showDetailDeal", method = RequestMethod.GET)
@@ -185,7 +185,7 @@ public class HouseController {
 			e.printStackTrace();
 			request.setAttribute("msg", "상세정보 조회 중 문제가 발생했습니다.");
 		}
-		return "apt/showRes";
+		return "house/showRes";
 	}
 	
 	@RequestMapping(value = "/showDetailRent", method = RequestMethod.GET)
@@ -201,6 +201,6 @@ public class HouseController {
 			e.printStackTrace();
 			request.setAttribute("msg", "상세정보 조회 중 문제가 발생했습니다.");
 		}
-		return "apt/showRes";
+		return "house/showRes";
 	}
 }

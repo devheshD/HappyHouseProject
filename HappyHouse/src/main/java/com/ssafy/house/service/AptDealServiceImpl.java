@@ -92,6 +92,7 @@ public class AptDealServiceImpl implements AptDealService {
 		boolean endRange = (totalPageCount - 1) / naviSize * naviSize < currentPage;
 		pageNavigation.setEndRange(endRange);
 		pageNavigation.makeNavigator();
+		
 		return pageNavigation;
 	}
 }
