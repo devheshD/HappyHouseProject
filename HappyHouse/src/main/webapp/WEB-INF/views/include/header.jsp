@@ -55,7 +55,7 @@
 							<a href="#">Home</a>
 						</li>
 						<li>
-							<a href="${root }/apt/apt" id="aptSearchBtn">Apartment</a>
+							<a href="${root }/house/search?pg=1" id="aptSearchBtn">Apartment</a>
 						</li>
 						<li>
 							<a href="${root }/housing/apt" id="housingSearchBtn">Housing</a>
