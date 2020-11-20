@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ssafy.house.dto.HouseInfoDto;
 import com.ssafy.house.dto.SidoCodeDto;
@@ -21,6 +22,7 @@ import com.ssafy.house.dto.SidoGugunCodeDto;
 import com.ssafy.house.service.MainService;
 
 @Controller
+@RequestMapping("/main")
 public class MainController {
 	
 	@Autowired
@@ -138,7 +140,6 @@ public class MainController {
 				out.close();
 			}
 		}		// End of if-else
-		
 		
 	}
 	
