@@ -16,7 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.ssafy.house.dto.HouseInfoDto;
+import com.ssafy.house.dto.AptInfoDto;
 import com.ssafy.house.dto.SidoCodeDto;
 import com.ssafy.house.dto.SidoGugunCodeDto;
 import com.ssafy.house.service.MainService;
@@ -91,11 +91,11 @@ public class MainController {
 		else if ("dong".equals(act)) {
 			String gugun = request.getParameter("gugun");
 			PrintWriter out = response.getWriter();
-			List<HouseInfoDto> list = null;
+			List<AptInfoDto> list = null;
 			JSONArray arr = new JSONArray();
 			try {
 				list = mainService.getDongInGugun(gugun);
-				for (HouseInfoDto dto : list) {
+				for (AptInfoDto dto : list) {
 					JSONObject obj = new JSONObject();
 					obj.put("code", dto.getCode());
 					obj.put("dong", dto.getDong());
@@ -116,11 +116,11 @@ public class MainController {
 		else if ("apt".equals(act)) {
 			String dong = request.getParameter("dong");
 			PrintWriter out = response.getWriter();
-			List<HouseInfoDto> list = null;
+			List<AptInfoDto> list = null;
 			JSONArray arr = new JSONArray();
 			try {
 				list = mainService.getAptInDong(dong);
-				for (HouseInfoDto dto : list) {
+				for (AptInfoDto dto : list) {
 					JSONObject obj = new JSONObject();
 					obj.put("no", dto.getNo());
 					obj.put("dong", dto.getDong());

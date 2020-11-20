@@ -1,6 +1,6 @@
 package com.ssafy.house.dto;
 
-public class HouseInfoDto {
+public class AptInfoDto {
 	private String no;
 	private String dong;
 	private String aptName;

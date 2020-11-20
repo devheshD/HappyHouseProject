@@ -17,14 +17,14 @@
 		ORDER BY gugun_code
 	</select>
 	
-	<select id="getDongInGugun" parameterType="String" resultType="HouseInfoDto">
+	<select id="getDongInGugun" parameterType="String" resultType="AptInfoDto">
 		SELECT distinct dong, code 
 		FROM houseinfo
 		where code = #{gugun}
 		ORDER BY dong
 	</select>
 	
-	<select id="getAptInDong" parameterType="String" resultType="HouseInfoDto">
+	<select id="getAptInDong" parameterType="String" resultType="AptInfoDto">
 		SELECT no,dong,AptName,code,jibun 
 		FROM houseinfo 
 		WHERE dong = #{dong}
