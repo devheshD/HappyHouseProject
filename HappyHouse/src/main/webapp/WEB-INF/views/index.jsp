@@ -23,7 +23,7 @@
 						});//ready
 						$(document).ready(function(){
 							$("#sido").change(function() {
-								$.get("${root}/map"
+								$.get("${root}/main/map"
 										,{act:"gugun", sido:$("#sido").val()}
 										,function(data, status){
 											$("#gugun").empty();
@@ -36,7 +36,7 @@
 								);//get
 							});//change
 							$("#gugun").change(function() {
-								$.get("${root}/map"
+								$.get("${root}/main/map"
 										,{act:"dong", gugun:$("#gugun").val()}
 										,function(data, status){
 											$("#dong").empty();
@@ -49,7 +49,7 @@
 								);//get
 							});//change
 							$("#dong").change(function() {
-								$.get("${root}/map"
+								$.get("${root}/main/map"
 										,{act:"apt", dong:$("#dong").val()}
 										,function(data, status){
 											$("#searchResult").empty();
