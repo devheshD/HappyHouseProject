@@ -41,10 +41,6 @@
 						<th scope="row">전화번호</th>
 						<td>${detail.phone}</td>
 					</tr>
-					<%-- <tr>
-						<th scope="row">사진</th>
-						<td><a href='' onclick="window.open('https://www.google.com/search?tbm=isch&q=' + '${deal.dong}' + ' ' + '${deal.aptName}')">사진 구글 검색</a></td>
-					</tr> --%>
 				</tbody>
 			</table>
 			<div class="entry-content">
