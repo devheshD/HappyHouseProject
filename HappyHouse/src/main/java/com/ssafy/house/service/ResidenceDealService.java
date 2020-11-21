@@ -15,6 +15,8 @@ public interface ResidenceDealService {
 	public ResidenceBuyDto show(int no) throws SQLException;
 
 	public List<ResidenceRentDto> searchRent(Map<String, String> map) throws Exception;
+	List<ResidenceRentDto> searchRentName(Map<String, String> map) throws Exception;
+	List<ResidenceRentDto> searchRentDongName(Map<String, String> map) throws Exception;
 	public ResidenceRentDto showRent(int no) throws SQLException;
 	
 	public PageNavigation makePageNavigationBuy(Map<String, String> map) throws Exception;

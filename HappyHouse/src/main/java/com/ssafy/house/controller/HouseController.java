@@ -29,7 +29,7 @@ public class HouseController {
 
 	@Autowired
 	private ResidenceDealService residenceDealService;
-	
+
 	/**
 	 * Apt Information
 	 */
@@ -38,7 +38,7 @@ public class HouseController {
 	public String goAptSearch(Model model, @RequestParam Map<String, String> map) {
 		String spp = map.get("spp");
 		map.put("spp", spp != null ? spp : "10");// sizePerPage
-		
+
 		try {
 			List<AptDealDto> list = aptDealService.searchAll(map);
 			PageNavigation pageNavigation = aptDealService.makePageNavigation(map);
@@ -47,10 +47,10 @@ public class HouseController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return "house/apt";
 	}
-	
+
 	// 아파트 이름으로 검색
 	@RequestMapping(value = "/searchAptName", method = RequestMethod.GET)
 	public String goAptSearchAptName(Model model, @RequestParam Map<String, String> map, HttpServletRequest request) {
@@ -69,15 +69,15 @@ public class HouseController {
 		}
 		return "house/apt";
 	}
-	
+
 	// 동 이름으로 검색
 	@RequestMapping(value = "/searchDongName", method = RequestMethod.GET)
-	public String searchDong(Model model, @RequestParam Map<String, String> map, HttpServletRequest request){		
+	public String searchDong(Model model, @RequestParam Map<String, String> map, HttpServletRequest request) {
 		String dongName = request.getParameter("word");
 		String spp = map.get("spp");
 		map.put("dongName", "%" + dongName + "%");
 		map.put("spp", spp != null ? spp : "10");
-		try {			
+		try {
 			List<AptDealDto> list = aptDealService.searchDong(map);
 			PageNavigation pageNavigation = aptDealService.makePageNavigation(map);
 			model.addAttribute("deals", list);
@@ -87,10 +87,10 @@ public class HouseController {
 		}
 		return "house/apt";
 	}
-	
+
 	// 아파트 상세보기
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
-	public String show(HttpServletRequest request){
+	public String show(HttpServletRequest request) {
 		int dealno = Integer.parseInt(request.getParameter("no"));
 		try {
 			AptDealDto house = aptDealService.show(dealno);
@@ -102,9 +102,9 @@ public class HouseController {
 		}
 		return "house/aptDetail";
 	}
-	
+
 	/**
-	 * residence Information
+	 * residence Deal Information
 	 */
 	// 주택 매매 정보
 	@RequestMapping(value = "/searchDeal", method = RequestMethod.GET)
@@ -114,7 +114,7 @@ public class HouseController {
 		try {
 			List<ResidenceBuyDto> list = residenceDealService.searchBuy(map);
 			PageNavigation pageNavigation = residenceDealService.makePageNavigationBuy(map);
-			
+
 			model.addAttribute("type", "buy");
 			model.addAttribute("deals", list);
 			model.addAttribute("navigation", pageNavigation);
@@ -124,7 +124,67 @@ public class HouseController {
 		}
 		return "house/residence";
 	}
-	
+
+	// 주택 매매 상세보기
+	@RequestMapping(value = "/showDeal", method = RequestMethod.GET)
+	public String showDeal(HttpServletRequest request) {
+		int dealno = Integer.parseInt(request.getParameter("no"));
+		try {
+			ResidenceBuyDto residenceBuy = residenceDealService.show(dealno);
+			HttpSession session = request.getSession();
+			session.setAttribute("deal", residenceBuy);
+			session.setAttribute("check", "buy");
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("msg", "상세정보 조회 중 문제가 발생했습니다.");
+		}
+		return "house/residenceDetail";
+	}
+
+	// 빌딩 이름으로 주택 매매 검색
+	@RequestMapping(value = "/searchDealBdName", method = RequestMethod.GET)
+	public String goResSearchDealDbName(Model model, @RequestParam Map<String, String> map, HttpServletRequest request) {
+		String resName = request.getParameter("word");
+		System.out.println("주택 이름(매매) : " + resName);
+		String spp = map.get("spp");
+		map.put("resName", "%" + resName + "%");
+		map.put("spp", spp != null ? spp : "10");// sizePerPage
+		try {
+			List<ResidenceBuyDto> list = residenceDealService.searchBuyName(map);
+			PageNavigation pageNavigation = residenceDealService.makePageNavigationBuy(map);
+			model.addAttribute("type", "buy");
+			model.addAttribute("deals", list);
+			model.addAttribute("navigation", pageNavigation);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "house/residence";
+	}
+
+	// 동 이름으로 주택 매매 검색
+	@RequestMapping(value = "/searchDealDongName", method = RequestMethod.GET)
+	public String goResSearchDealDongName(Model model, @RequestParam Map<String, String> map,
+			HttpServletRequest request) {
+		String dongName = request.getParameter("word");
+		System.out.println("동 주택 이름 : " + dongName);
+		String spp = map.get("spp");
+		map.put("dongName", "%" + dongName + "%");
+		map.put("spp", spp != null ? spp : "10");// sizePerPage
+		try {
+			List<ResidenceBuyDto> list = residenceDealService.searchBuyDongName(map);
+			PageNavigation pageNavigation = residenceDealService.makePageNavigationRent(map);
+			model.addAttribute("type", "buy");
+			model.addAttribute("deals", list);
+			model.addAttribute("navigation", pageNavigation);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "house/residence";
+	}
+
+	/**
+	 * residence Rent Information
+	 */
 	// 주택 전월세 목록
 	@RequestMapping(value = "/searchRent", method = RequestMethod.GET)
 	public String goRentSearch(Model model, @RequestParam Map<String, String> map) {
@@ -143,26 +203,10 @@ public class HouseController {
 
 		return "house/residence";
 	}
-	
-	// 주택 매매 상세보기
-	@RequestMapping(value = "/showDeal", method = RequestMethod.GET)
-	public String showDeal(HttpServletRequest request){
-		int dealno = Integer.parseInt(request.getParameter("no"));
-		try {
-			ResidenceBuyDto residenceBuy = residenceDealService.show(dealno);
-			HttpSession session = request.getSession();
-			session.setAttribute("deal", residenceBuy);
-			session.setAttribute("check", "buy");
-		} catch (Exception e) {
-			e.printStackTrace();
-			request.setAttribute("msg", "상세정보 조회 중 문제가 발생했습니다.");
-		}
-		return "house/residenceDetail";
-	}
-	
+
 	// 주택 전월세 상세보기
 	@RequestMapping(value = "/showRent", method = RequestMethod.GET)
-	public String showRent(HttpServletRequest request){
+	public String showRent(HttpServletRequest request) {
 		int rentno = Integer.parseInt(request.getParameter("no"));
 		System.out.println("전월세 세부 정보 : " + rentno);
 		try {
@@ -176,42 +220,41 @@ public class HouseController {
 		}
 		return "house/residenceDetail";
 	}
-	
-	
-	
-	
-	
-	@RequestMapping(value = "/searchResName", method = RequestMethod.GET)
-	public String goResSearchResName(Model model, @RequestParam Map<String, String> map, HttpServletRequest request) {
+
+	// 빌딩 이름으로 주택 전월세 검색
+	@RequestMapping(value = "/searchRentBdName", method = RequestMethod.GET)
+	public String goResSearchRentDbName(Model model, @RequestParam Map<String, String> map, HttpServletRequest request) {
 		String resName = request.getParameter("word");
-		System.out.println("주택 이름 : " + resName);
+		System.out.println("주택 이름(전월세) : " + resName);
 		String spp = map.get("spp");
 		map.put("resName", "%" + resName + "%");
 		map.put("spp", spp != null ? spp : "10");// sizePerPage
 		try {
-			List<ResidenceBuyDto> list = residenceDealService.searchBuyName(map);
-			PageNavigation pageNavigation = residenceDealService.makePageNavigationBuy(map);
-			model.addAttribute("type", "buy");
-			model.addAttribute("deals", list);
+			List<ResidenceRentDto> list = residenceDealService.searchRentName(map);
+			PageNavigation pageNavigation = residenceDealService.makePageNavigationRent(map);
+			model.addAttribute("type", "rent");
+			model.addAttribute("rents", list);
 			model.addAttribute("navigation", pageNavigation);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "house/residence";
 	}
-	
-	@RequestMapping(value = "/searchResDongName", method = RequestMethod.GET)
-	public String goResSearchResDongName(Model model, @RequestParam Map<String, String> map, HttpServletRequest request) {
+
+	// 동 이름으로 주택 전월세 검색
+	@RequestMapping(value = "/searchRentDongName", method = RequestMethod.GET)
+	public String goResSearchRentDongName(Model model, @RequestParam Map<String, String> map,
+			HttpServletRequest request) {
 		String dongName = request.getParameter("word");
-		System.out.println("동 주택 이름 : " + dongName);
+		System.out.println("동 주택 이름(전월세) : " + dongName);
 		String spp = map.get("spp");
 		map.put("dongName", "%" + dongName + "%");
 		map.put("spp", spp != null ? spp : "10");// sizePerPage
 		try {
-			List<ResidenceBuyDto> list = residenceDealService.searchBuyDongName(map);
+			List<ResidenceRentDto> list = residenceDealService.searchRentDongName(map);
 			PageNavigation pageNavigation = residenceDealService.makePageNavigationRent(map);
-			model.addAttribute("type", "buy");
-			model.addAttribute("deals", list);
+			model.addAttribute("type", "rent");
+			model.addAttribute("rents", list);
 			model.addAttribute("navigation", pageNavigation);
 		} catch (Exception e) {
 			e.printStackTrace();

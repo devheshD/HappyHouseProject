@@ -19,6 +19,22 @@
 		where no = #{no}
 	</select>
 	
+	<select id="searchRentName" parameterType="map" resultType="ResidenceRentDto">
+		select no,city,gugun,dong,bunji,bonbun,bubun,buildingname,type,area,substr(contract_year_month, 1, 4) contractYear, substr(contract_year_month, 5, 6) contractMonth, contract_day contractDay,bondfee,rentmoney,floor,buildyear,address
+		from residencerent
+		where buildingname like #{resName}
+		order by no asc
+		limit #{start}, #{spp}
+	</select>
+	
+	<select id="searchRentDongName" parameterType="map" resultType="ResidenceRentDto">
+		select no,city,gugun,dong,bunji,bonbun,bubun,buildingname,type,area,substr(contract_year_month, 1, 4) contractYear, substr(contract_year_month, 5, 6) contractMonth, contract_day contractDay,bondfee,rentmoney,floor,buildyear,address
+		from residencerent
+		where dong like #{dongName}
+		order by no asc
+		limit #{start}, #{spp}
+	</select>
+	
 	<!-- public int getTotalCountRent(String key, String word) -->
 	<select id="getTotalCountRent" parameterType="map" resultType="int">
 		select count(no)

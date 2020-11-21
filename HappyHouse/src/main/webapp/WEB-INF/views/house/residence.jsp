@@ -16,14 +16,20 @@
 		}
 
 		var sel = document.getElementById("key");
-		var sel2 = document.getElementById("key2");
+		var type = document.getElementById("key2");
 		var tmp = document.getElementById("word");
+		
 		if (sel.options[sel.selectedIndex].value == "aptname") {
-			document.location.href = "${root}/house/searchResName?pg=1&word="
-					+ tmp.value;
+			if(type.options[type.selectedIndex].value == "deal")
+				document.location.href = "${root}/house/searchDealBdName?pg=1&word=" + tmp.value;
+			else
+				document.location.href = "${root}/house/searchRentBdName?pg=1&word=" + tmp.value;
 		} else if (sel.options[sel.selectedIndex].value == "dongname") {
-			document.location.href = "${root}/house/searchResDongName?&pg=1&word="
-					+ tmp.value;
+			if(type.options[type.selectedIndex].value == "deal")
+				document.location.href = "${root}/house/searchDealDongName?&pg=1&word=" + tmp.value;
+			else 
+				document.location.href = "${root}/house/searchRentDongName?pg=1&word=" + tmp.value;
+		
 		}
 	}
 	function pageMove(pg) {
@@ -64,11 +70,11 @@
 							onclick="javascript:searchRent();">전월세</button>
 						<div class="form-group">
 							<select class="form-control" name="key" id="key">
-								<option value="aptname" selected="selected">아파트 이름</option>
+								<option value="aptname" selected="selected">빌딩 이름</option>
 								<option value="dongname">동 이름</option>
 							</select> <select class="form-control" name="key2" id="key2">
 								<option value="deal" selected="selected">매매</option>
-								<option value="buy">전월세</option>
+								<option value="rent">전월세</option>
 							</select>
 						</div>
 						<div class="form-group">
