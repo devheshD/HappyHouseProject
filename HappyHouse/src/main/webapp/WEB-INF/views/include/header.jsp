@@ -61,10 +61,10 @@
 							<a href="${root }/housing/apt" id="housingSearchBtn">Housing</a>
 						</li>
 						<li>
-							<a href="#" id="coronaSearchBtn">Corona</a>
+							<a href="${root }/clinic/corona?page=1" id="coronaSearchBtn">Corona</a>
 						</li>
 						<li>
-							<a href="#" id="hospitalSearchBtn">Hospital</a>
+							<a href="${root }/clinic/hospital" id="hospitalSearchBtn">Hospital</a>
 						</li>
 						<li>
 							<a href="#" id="announceBtn">Announcement</a>
