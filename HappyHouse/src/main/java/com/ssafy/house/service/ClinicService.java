@@ -8,6 +8,7 @@ import com.ssafy.house.util.PageNavigation;
 
 public interface ClinicService {
 	public List<ClinicCoronaDto> searchAll(String page);
-	public PageNavigation makePageNavigation(String page);
+	public List<ClinicCoronaDto> searchHealthCenter(String page, String word);
+	public PageNavigation makePageNavigation(Map<String, String> map);
 
 }

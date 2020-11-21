@@ -4,32 +4,23 @@
 	
 <mapper namespace="com.ssafy.house.repository.ClinicRepository">
 <select id="searchAll" parameterType="map" resultType="ClinicCoronaDto">
-		select update_date, testable, city, gugun, clinic_name, address,opening_hours_weekday,opening_hours_sat,opening_hours_sun_ph,phone
+		select update_date, testable, city, gugun, clinic_name, address,opening_hours_weekday, opening_hours_sat, opening_hours_sun_ph, phone
 		from coronaclinic
 		limit #{start}, #{pageCnt}
 	</select>
  	
-	<select id="getTotalCount" resultType="int">
-		select count(update_date)
-		from coronaclinic
-	</select>
-<!--	
-		<select id="searchAll" parameterType="map" resultType="ClinicHospitalDto">
-		select update_date,city,gugun,hospital_name,address,type,phone_number
-		from coronahospital
-		limit #{start}, #{spp}
-	</select>
-	
 	<select id="getTotalCount" parameterType="map" resultType="int">
 		select count(update_date)
-		from coronahospital
-		<if test="word != null and word != ''">
-			<if test="key == 'subject'">
-				where subject like concat('%', #{word}, '%')
-			</if>
-			<if test="key != 'subject'">
-				where #{key} = #{word}
-			</if>
+		from coronaclinic
+		<if  test="clinicName != null">
+			where clinic_name like concat('%', #{clinicName}, '%')
 		</if>
-	</select> -->
+	</select>
+	
+	<select id="searchHealthCenter" parameterType="map" resultType="ClinicCoronaDto">
+		select update_date, testable, city, gugun, clinic_name, address, opening_hours_weekday, opening_hours_sat, opening_hours_sun_ph, phone
+		from coronaclinic
+		where clinic_name like concat('%', #{clinicName}, '%')
+		limit #{start}, #{pageCnt}
+	</select>
 </mapper>

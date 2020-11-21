@@ -18,17 +18,17 @@
 				<div class="col-lg-3"></div>
 				<div class="col-lg-7 entries">
 					<form class="form-inline">
-						<button type="button" class="btn btn-info mr-3">전체 조회</button>
+						<button id="listAll" type="button" class="btn btn-info mr-3">전체 조회</button>
 						<div class="form-group">
 							<select class="form-control" name="key" id="key">
-								<option value="hospitalname" selected="selected">병원 이름</option>
+								<option value="healthCenterName" selected="selected">보건소 이름</option>
 								<option value="dongname">동 이름</option>
 							</select>
 						</div>
 						<div class="form-group">
 							<input type="text" class="form-control" placeholder="검색어 입력" name="word" id="word">
 						</div>
-						<button type="button" class="btn btn-primary">검색</button>
+						<button id="search" type="button" class="btn btn-primary">검색</button>
 					</form>
 
 				</div>
@@ -48,15 +48,11 @@
 							<table class="table">
 								<thead class="thead-dark">
 									<tr>
-										<th>번호</th>
-										<th>Information</th>
+										<th scope="row">도시</th>
+										<th>${list.city }</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<th scope="row">도시</th>
-										<td>${list.city }</td>
-									</tr>
 									<tr>
 										<th scope="row">주소</th>
 										<td>${list.address }</td>
@@ -96,8 +92,30 @@
 	</section>
 	<script>
 	function pageMove(page) {
-		location.href = "${root}/clinic/corona?page=" + page;
+		location.href = "${root}/clinic/corona?page=" + page;		
 	}
+	
+	// 전체 조회 버튼 클릭 이벤트
+	$('#listAll').on('click', function() {
+		location.href = "${root}/clinic/corona?page=1";
+	});
+	// 검색 버튼 클릭 이벤트
+	$('#search').on('click', function() {
+		let word = $('#word').val();
+		let key = $('#key option:selected').val();
+		
+		if (word == "") {
+			alert("검색어를 입력해주세요.");
+		} else {
+			if (key == "healthCenterName") {
+				location.href = "${root}/clinic/healthCenterName?page=1&word=" + word;
+			} else if (key == "dongName") {
+				location.href = "${root}/clinic/corona?dongName?page=1&word=" + word;
+			}
+		}
+		
+	});
+	
 	</script>
 </body>
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>

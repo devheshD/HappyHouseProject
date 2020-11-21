@@ -29,11 +29,27 @@ public class ClinicServiceImpl implements ClinicService {
 		return repo.searchAll(map);
 	}
 	
-	public PageNavigation makePageNavigation(String page) {
+
+	@Override
+	public List<ClinicCoronaDto> searchHealthCenter(String page, String clinicName) {
+		Map map = new HashMap<String, Object>();
+		int curPage = Integer.parseInt(page);
+		int pageCnt = 10;						// 보여줄 게시글의 갯수
+		int start = (curPage - 1) * pageCnt;	// 보여줄 게시글의 시작
+		map.put("start", start);
+		map.put("pageCnt", pageCnt);
+		map.put("clinicName", clinicName);
+		
+		return repo.searchHealthCenter(map);
+	}	
+	
+	
+	@Override
+	public PageNavigation makePageNavigation(Map<String, String> map) {
 		int naviSize = 10;
-		int currentPage = Integer.parseInt(page);	// 현재 페이지 번호
-		int sizePerPage = naviSize;					// 페이지 글 갯수
-		int totalCount = repo.getTotalCount();
+		int currentPage = Integer.parseInt(map.get("page"));    // 현재 페이지 번호
+		int sizePerPage = naviSize;								// 페이지 글 갯수
+		int totalCount = repo.getTotalCount(map);
 		
 		PageNavigation pageNavigation = new PageNavigation();
 		pageNavigation.setCurrentPage(currentPage);
@@ -49,6 +65,7 @@ public class ClinicServiceImpl implements ClinicService {
 		pageNavigation.makeNavigator();
 		return pageNavigation;
 		
-	}	
+	}
+
 
 }

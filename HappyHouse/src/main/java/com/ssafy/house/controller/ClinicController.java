@@ -1,6 +1,8 @@
 package com.ssafy.house.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,13 +23,34 @@ public class ClinicController {
 	ClinicService service;
 	
 	@GetMapping("/corona")
-	public String main(@RequestParam String page, Model model) {
+	public String corona(@RequestParam String page, Model model) {
 		List<ClinicCoronaDto> list = service.searchAll(page);
 		// 페이징 처리
-		PageNavigation pageNavigation = service.makePageNavigation(page);
+		Map map = new HashMap<String, String>();
+		map.put("page", page);
+		PageNavigation pageNavigation = service.makePageNavigation(map);
+		
 		model.addAttribute("coronaClinicList", list);
 		model.addAttribute("pageNavigation", pageNavigation);
+		
 		return "clinic/corona";
 	}
+	
+	@GetMapping("/healthCenterName")
+	public String healthCenter(@RequestParam String page, @RequestParam String word, Model model) {
+		List<ClinicCoronaDto> list = service.searchHealthCenter(page, word);
+		
+		Map map = new HashMap<String, String>();
+		map.put("page", page);
+		map.put("clinicName", word);
+		PageNavigation pageNavigation = service.makePageNavigation(map);
+		
+		model.addAttribute("coronaClinicList", list);
+		model.addAttribute("pageNavigation", pageNavigation);
+		
+		return "clinic/corona";
+	}
+	
+	
 	
 }
