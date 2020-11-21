@@ -22,7 +22,7 @@
 						<div class="form-group">
 							<select class="form-control" name="key" id="key">
 								<option value="healthCenterName" selected="selected">보건소 이름</option>
-								<option value="dongname">동 이름</option>
+								<option value="city">지역</option>
 							</select>
 						</div>
 						<div class="form-group">
@@ -107,11 +107,7 @@
 		if (word == "") {
 			alert("검색어를 입력해주세요.");
 		} else {
-			if (key == "healthCenterName") {
-				location.href = "${root}/clinic/healthCenterName?page=1&word=" + word;
-			} else if (key == "dongName") {
-				location.href = "${root}/clinic/corona?dongName?page=1&word=" + word;
-			}
+			location.href = "${root}/clinic/search?page=1&word=" + word + "&keyword=" + key;
 		}
 		
 	});

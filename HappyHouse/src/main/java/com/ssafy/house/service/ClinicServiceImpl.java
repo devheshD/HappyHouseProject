@@ -42,7 +42,20 @@ public class ClinicServiceImpl implements ClinicService {
 		
 		return repo.searchHealthCenter(map);
 	}	
-	
+
+
+	@Override
+	public List<ClinicCoronaDto> searchCity(String page, String city) {
+		Map map = new HashMap<String, Object>();
+		int curPage = Integer.parseInt(page);
+		int pageCnt = 10;						// 보여줄 게시글의 갯수
+		int start = (curPage - 1) * pageCnt;	// 보여줄 게시글의 시작
+		map.put("start", start);
+		map.put("pageCnt", pageCnt);
+		map.put("city", city);
+		
+		return repo.searchCity(map);
+	}
 	
 	@Override
 	public PageNavigation makePageNavigation(Map<String, String> map) {
@@ -66,6 +79,7 @@ public class ClinicServiceImpl implements ClinicService {
 		return pageNavigation;
 		
 	}
+
 
 
 }

@@ -12,8 +12,8 @@
 	<select id="getTotalCount" parameterType="map" resultType="int">
 		select count(update_date)
 		from coronaclinic
-		<if  test="clinicName != null">
-			where clinic_name like concat('%', #{clinicName}, '%')
+		<if  test="searchKeyword != null">
+			where clinic_name like concat('%', #{searchKeyword}, '%')
 		</if>
 	</select>
 	
@@ -23,4 +23,14 @@
 		where clinic_name like concat('%', #{clinicName}, '%')
 		limit #{start}, #{pageCnt}
 	</select>
+	
+	<select id="searchCity" parameterType="map" resultType="ClinicCoronaDto">
+		select update_date, testable, city, gugun, clinic_name, address, opening_hours_weekday, opening_hours_sat, opening_hours_sun_ph, phone
+		from coronaclinic
+		where city like concat('%', #{city}, '%')
+		limit #{start}, #{pageCnt}
+	</select>
+	
+	
+	
 </mapper>

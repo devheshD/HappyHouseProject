@@ -36,17 +36,29 @@ public class ClinicController {
 		return "clinic/corona";
 	}
 	
-	@GetMapping("/healthCenterName")
-	public String healthCenter(@RequestParam String page, @RequestParam String word, Model model) {
-		List<ClinicCoronaDto> list = service.searchHealthCenter(page, word);
-		
+	@GetMapping("/search")
+	public String healthCenter(@RequestParam String page, @RequestParam String word,  @RequestParam String keyword, Model model) {
 		Map map = new HashMap<String, String>();
+		List<ClinicCoronaDto> list = null;
+		
+		// 보건소 이름으로 검색시
+		if (keyword.equals("healthCenterName")) {
+			list = service.searchHealthCenter(page, word);
+			for (int i = 0; i < list.size();i++) {
+				System.out.println(list.get(i).getCity());
+			}
+		} 
+		// 도시로 으로 검색시
+		else if (keyword.equals("city")) {
+			list = service.searchCity(page, word);
+		}
+		
 		map.put("page", page);
-		map.put("clinicName", word);
+		map.put("searchKeyword", word);
 		PageNavigation pageNavigation = service.makePageNavigation(map);
 		
-		model.addAttribute("coronaClinicList", list);
 		model.addAttribute("pageNavigation", pageNavigation);
+		model.addAttribute("coronaClinicList", list);
 		
 		return "clinic/corona";
 	}
