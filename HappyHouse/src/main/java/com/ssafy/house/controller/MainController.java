@@ -127,6 +127,8 @@ public class MainController {
 					obj.put("aptName", dto.getAptName());
 					obj.put("code", dto.getCode());
 					obj.put("jibun", dto.getJibun());
+					obj.put("dealAmount", dto.getDealAmount());
+					obj.put("area", dto.getArea());
 					arr.add(obj);
 				}
 			} catch (Exception e) {

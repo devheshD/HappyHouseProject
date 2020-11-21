@@ -10,6 +10,8 @@ public class AptInfoDto {
 	private String lat;
 	private String lng;
 	private String img;
+	private String dealAmount;
+	private String area;
 
 	public String getNo() {
 		return no;
@@ -81,6 +83,22 @@ public class AptInfoDto {
 
 	public void setImg(String img) {
 		this.img = img;
+	}
+
+	public String getDealAmount() {
+		return dealAmount;
+	}
+
+	public void setDealAmount(String dealAmount) {
+		this.dealAmount = dealAmount;
+	}
+
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
 	}
 
 }

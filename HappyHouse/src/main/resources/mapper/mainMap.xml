@@ -25,9 +25,9 @@
 	</select>
 	
 	<select id="getAptInDong" parameterType="String" resultType="AptInfoDto">
-		SELECT no,dong,AptName,code,jibun 
-		FROM houseinfo 
-		WHERE dong = #{dong}
+		select i.no, i.dong, i.AptName, i.code, i.jibun, d.dealAmount, left(d.area, 5) area
+		from housedeal d, (SELECT no,dong,AptName,code,jibun FROM houseinfo WHERE dong = #{dong}) i
+		where d.no = i.no
 		ORDER BY AptName
 	</select>
 	

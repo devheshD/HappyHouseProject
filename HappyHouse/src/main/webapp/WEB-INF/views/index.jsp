@@ -113,8 +113,8 @@
 									<th>아파트이름</th>
 									<th>지번</th>
 									<th>지역코드</th>
-									<th>거래금액</th>
-									<th>면적</th>
+									<th>거래금액(만원)</th>
+									<th>면적(m<sup>2</sup>)</th>
 								</tr>
 							</thead>
 							<tbody id="searchResult">
