@@ -30,7 +30,10 @@ public class HouseController {
 	@Autowired
 	private ResidenceDealService residenceDealService;
 	
-	// initial list
+	/**
+	 * Apt Information
+	 */
+	// 아파트 거래가 목록
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public String goAptSearch(Model model, @RequestParam Map<String, String> map) {
 		String spp = map.get("spp");
@@ -48,7 +51,7 @@ public class HouseController {
 		return "house/apt";
 	}
 	
-	// 
+	// 아파트 이름으로 검색
 	@RequestMapping(value = "/searchAptName", method = RequestMethod.GET)
 	public String goAptSearchAptName(Model model, @RequestParam Map<String, String> map, HttpServletRequest request) {
 		String aptName = request.getParameter("word");
@@ -67,6 +70,7 @@ public class HouseController {
 		return "house/apt";
 	}
 	
+	// 동 이름으로 검색
 	@RequestMapping(value = "/searchDongName", method = RequestMethod.GET)
 	public String searchDong(Model model, @RequestParam Map<String, String> map, HttpServletRequest request){		
 		String dongName = request.getParameter("word");
@@ -84,7 +88,26 @@ public class HouseController {
 		return "house/apt";
 	}
 	
-	@RequestMapping(value = "/searchRes", method = RequestMethod.GET)
+	// 아파트 상세보기
+	@RequestMapping(value = "/show", method = RequestMethod.GET)
+	public String show(HttpServletRequest request){
+		int dealno = Integer.parseInt(request.getParameter("no"));
+		try {
+			AptDealDto house = aptDealService.show(dealno);
+			HttpSession session = request.getSession();
+			session.setAttribute("deal", house);
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("msg", "상세정보 조회 중 문제가 발생했습니다.");
+		}
+		return "house/aptDetail";
+	}
+	
+	/**
+	 * residence Information
+	 */
+	// 주택 매매 정보
+	@RequestMapping(value = "/searchDeal", method = RequestMethod.GET)
 	public String goResSearch(Model model, @RequestParam Map<String, String> map) {
 		String spp = map.get("spp");
 		map.put("spp", spp != null ? spp : "10");// sizePerPage
@@ -99,8 +122,64 @@ public class HouseController {
 			e.printStackTrace();
 			System.out.println("에러발생");
 		}
-		return "house/searchResList";
+		return "house/residence";
 	}
+	
+	// 주택 전월세 목록
+	@RequestMapping(value = "/searchRent", method = RequestMethod.GET)
+	public String goRentSearch(Model model, @RequestParam Map<String, String> map) {
+		String spp = map.get("spp");
+		map.put("spp", spp != null ? spp : "10");// sizePerPage
+		try {
+			List<ResidenceRentDto> list = residenceDealService.searchRent(map);
+			PageNavigation pageNavigation = residenceDealService.makePageNavigationRent(map);
+			model.addAttribute("type", "rent");
+			model.addAttribute("rents", list);
+			model.addAttribute("navigationRent", pageNavigation);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("에러발생");
+		}
+
+		return "house/residence";
+	}
+	
+	// 주택 매매 상세보기
+	@RequestMapping(value = "/showDeal", method = RequestMethod.GET)
+	public String showDeal(HttpServletRequest request){
+		int dealno = Integer.parseInt(request.getParameter("no"));
+		try {
+			ResidenceBuyDto residenceBuy = residenceDealService.show(dealno);
+			HttpSession session = request.getSession();
+			session.setAttribute("deal", residenceBuy);
+			session.setAttribute("check", "buy");
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("msg", "상세정보 조회 중 문제가 발생했습니다.");
+		}
+		return "house/residenceDetail";
+	}
+	
+	// 주택 전월세 상세보기
+	@RequestMapping(value = "/showRent", method = RequestMethod.GET)
+	public String showRent(HttpServletRequest request){
+		int rentno = Integer.parseInt(request.getParameter("no"));
+		System.out.println("전월세 세부 정보 : " + rentno);
+		try {
+			ResidenceRentDto residenceRent = residenceDealService.showRent(rentno);
+			HttpSession session = request.getSession();
+			session.setAttribute("deal", residenceRent);
+			session.setAttribute("check", "rent");
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("msg", "상세정보 조회 중 문제가 발생했습니다.");
+		}
+		return "house/residenceDetail";
+	}
+	
+	
+	
+	
 	
 	@RequestMapping(value = "/searchResName", method = RequestMethod.GET)
 	public String goResSearchResName(Model model, @RequestParam Map<String, String> map, HttpServletRequest request) {
@@ -118,7 +197,7 @@ public class HouseController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "house/searchResList";
+		return "house/residence";
 	}
 	
 	@RequestMapping(value = "/searchResDongName", method = RequestMethod.GET)
@@ -137,70 +216,6 @@ public class HouseController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "house/searchResList";
-	}
-	
-	
-	@RequestMapping(value = "/searchRent", method = RequestMethod.GET)
-	public String goRentSearch(Model model, @RequestParam Map<String, String> map) {
-		String spp = map.get("spp");
-		map.put("spp", spp != null ? spp : "10");// sizePerPage
-		try {
-			List<ResidenceRentDto> list = residenceDealService.searchRent(map);
-			PageNavigation pageNavigation = residenceDealService.makePageNavigationRent(map);
-			model.addAttribute("type", "rent");
-			model.addAttribute("rents", list);
-			model.addAttribute("navigationRent", pageNavigation);
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("에러발생");
-		}
-
-		return "house/searchResList";
-	}
-	
-	@RequestMapping(value = "/show", method = RequestMethod.GET)
-	public String show(HttpServletRequest request){
-		int dealno = Integer.parseInt(request.getParameter("no"));
-		try {
-			AptDealDto house = aptDealService.show(dealno);
-			HttpSession session = request.getSession();
-			session.setAttribute("deal", house);
-		} catch (Exception e) {
-			e.printStackTrace();
-			request.setAttribute("msg", "상세정보 조회 중 문제가 발생했습니다.");
-		}
-		return "house/showApt";
-	}
-	
-	@RequestMapping(value = "/showDetailDeal", method = RequestMethod.GET)
-	public String showDeal(HttpServletRequest request){
-		int dealno = Integer.parseInt(request.getParameter("no"));
-		try {
-			ResidenceBuyDto residenceBuy = residenceDealService.show(dealno);
-			HttpSession session = request.getSession();
-			session.setAttribute("deal", residenceBuy);
-			session.setAttribute("check", "buy");
-		} catch (Exception e) {
-			e.printStackTrace();
-			request.setAttribute("msg", "상세정보 조회 중 문제가 발생했습니다.");
-		}
-		return "house/showRes";
-	}
-	
-	@RequestMapping(value = "/showDetailRent", method = RequestMethod.GET)
-	public String showRent(HttpServletRequest request){
-		int rentno = Integer.parseInt(request.getParameter("no"));
-		System.out.println("전월세 세부 정보 : " + rentno);
-		try {
-			ResidenceRentDto residenceRent = residenceDealService.showRent(rentno);
-			HttpSession session = request.getSession();
-			session.setAttribute("deal", residenceRent);
-			session.setAttribute("check", "rent");
-		} catch (Exception e) {
-			e.printStackTrace();
-			request.setAttribute("msg", "상세정보 조회 중 문제가 발생했습니다.");
-		}
-		return "house/showRes";
+		return "house/residence";
 	}
 }
