@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.ssafy.house.repository.ClinicRepository">
+<select id="searchAll" parameterType="map" resultType="ClinicCoronaDto">
+		select update_date, testable, city, gugun, clinic_name, address,opening_hours_weekday,opening_hours_sat,opening_hours_sun_ph,phone
+		from coronaclinic
+		limit #{start}, #{sizePerPage}
+	</select>
+<!-- 	
+	<select id="getTotalCount" parameterType="map" resultType="int">
+		select count(update_date)
+		from coronaclinic
+		<if test="word != null and word != ''">
+			<if test="key == 'subject'">
+				where subject like concat('%', #{word}, '%')
+			</if>
+			<if test="key != 'subject'">
+				where #{key} = #{word}
+			</if>
+		</if>
+	</select>
+	
+		<select id="searchAll" parameterType="map" resultType="ClinicHospitalDto">
+		select update_date,city,gugun,hospital_name,address,type,phone_number
+		from coronahospital
+		limit #{start}, #{spp}
+	</select>
+	
+	<select id="getTotalCount" parameterType="map" resultType="int">
+		select count(update_date)
+		from coronahospital
+		<if test="word != null and word != ''">
+			<if test="key == 'subject'">
+				where subject like concat('%', #{word}, '%')
+			</if>
+			<if test="key != 'subject'">
+				where #{key} = #{word}
+			</if>
+		</if>
+	</select> -->
+</mapper>
