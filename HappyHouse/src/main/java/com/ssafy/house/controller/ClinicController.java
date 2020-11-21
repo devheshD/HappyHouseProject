@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ssafy.house.dto.ClinicCoronaDto;
 import com.ssafy.house.service.ClinicService;
+import com.ssafy.house.util.PageNavigation;
 
 @Controller
 @RequestMapping("/clinic")
@@ -22,9 +23,10 @@ public class ClinicController {
 	@GetMapping("/corona")
 	public String main(@RequestParam String page, Model model) {
 		List<ClinicCoronaDto> list = service.searchAll(page);
-		
+		// 페이징 처리
+		PageNavigation pageNavigation = service.makePageNavigation(page);
 		model.addAttribute("coronaClinicList", list);
-		
+		model.addAttribute("pageNavigation", pageNavigation);
 		return "clinic/corona";
 	}
 	

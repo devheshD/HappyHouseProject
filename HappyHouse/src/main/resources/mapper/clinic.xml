@@ -6,22 +6,14 @@
 <select id="searchAll" parameterType="map" resultType="ClinicCoronaDto">
 		select update_date, testable, city, gugun, clinic_name, address,opening_hours_weekday,opening_hours_sat,opening_hours_sun_ph,phone
 		from coronaclinic
-		limit #{start}, #{sizePerPage}
+		limit #{start}, #{pageCnt}
 	</select>
-<!-- 	
-	<select id="getTotalCount" parameterType="map" resultType="int">
+ 	
+	<select id="getTotalCount" resultType="int">
 		select count(update_date)
 		from coronaclinic
-		<if test="word != null and word != ''">
-			<if test="key == 'subject'">
-				where subject like concat('%', #{word}, '%')
-			</if>
-			<if test="key != 'subject'">
-				where #{key} = #{word}
-			</if>
-		</if>
 	</select>
-	
+<!--	
 		<select id="searchAll" parameterType="map" resultType="ClinicHospitalDto">
 		select update_date,city,gugun,hospital_name,address,type,phone_number
 		from coronahospital

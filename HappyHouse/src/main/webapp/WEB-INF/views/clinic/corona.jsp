@@ -83,7 +83,7 @@
 					<br>
 					<table align="center">
 						<tr>
-							<td>페이징</td>
+							<td>${pageNavigation.navigator}</td>
 						</tr>
 					</table>
 					<br>
@@ -94,6 +94,10 @@
 
 		</div>
 	</section>
-	
+	<script>
+	function pageMove(page) {
+		location.href = "${root}/clinic/corona?page=" + page;
+	}
+	</script>
 </body>
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
