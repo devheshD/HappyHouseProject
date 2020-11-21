@@ -10,5 +10,6 @@ public interface ClinicRepository {
 	public List<ClinicCoronaDto> searchAll(Map<String, Integer> map);
 	public List<ClinicCoronaDto> searchHealthCenter(Map<String, String> map);
 	public List<ClinicCoronaDto> searchCity(Map<String, String> map);
+	public ClinicCoronaDto detailPage(String name);
 	public int getTotalCount(Map<String, String> map);
 }

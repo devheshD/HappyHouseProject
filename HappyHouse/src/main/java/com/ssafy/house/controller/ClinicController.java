@@ -63,6 +63,12 @@ public class ClinicController {
 		return "clinic/corona";
 	}
 	
-	
+	@GetMapping("/coronaDetail")
+	public String detailPage(@RequestParam String name, Model model) {
+		ClinicCoronaDto dto = service.detailPage(name);
+		model.addAttribute("detail", dto);
+		
+		return "clinic/coronaDetail";
+	}
 	
 }

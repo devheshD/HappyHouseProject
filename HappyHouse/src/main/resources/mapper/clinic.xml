@@ -31,6 +31,12 @@
 		limit #{start}, #{pageCnt}
 	</select>
 	
+	<select id="detailPage" parameterType="String" resultType="ClinicCoronaDto">
+		select update_date, testable, city, gugun, clinic_name, address, opening_hours_weekday, opening_hours_sat, opening_hours_sun_ph, phone
+		from coronaclinic
+		where clinic_name like #{name}
+		
+	</select>
 	
 	
 </mapper>

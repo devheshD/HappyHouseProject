@@ -2,10 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
 <body>
-	<form name="pageform" id="pageform" method="GET" action="">
-		<input type="hidden" name="act" id="act" value="notice"> 
-		<input type="hidden" name="pg" id="pg" value="">
-	</form>
 	<section id="blog" class="blog">
 		<div class="container aos-init aos-animate" data-aos="fade-up">
 			<div class="row">
@@ -69,7 +65,7 @@
 							</table>
 							<div class="entry-content">
 								<div class="read-more">
-									<a href="#">Read More</a>
+									<a href="${root }/clinic/coronaDetail?name=${list.clinic_name}">Read More</a>
 								</div>
 							</div>
 						</article>

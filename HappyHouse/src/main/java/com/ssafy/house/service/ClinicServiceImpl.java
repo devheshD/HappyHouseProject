@@ -58,6 +58,11 @@ public class ClinicServiceImpl implements ClinicService {
 	}
 	
 	@Override
+	public ClinicCoronaDto detailPage(String name) {
+		return repo.detailPage(name);
+	}
+	
+	@Override
 	public PageNavigation makePageNavigation(Map<String, String> map) {
 		int naviSize = 10;
 		int currentPage = Integer.parseInt(map.get("page"));    // 현재 페이지 번호
@@ -79,6 +84,7 @@ public class ClinicServiceImpl implements ClinicService {
 		return pageNavigation;
 		
 	}
+
 
 
 
