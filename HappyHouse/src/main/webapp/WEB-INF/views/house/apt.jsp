@@ -32,6 +32,9 @@
 		<input type="hidden" name="act" id="act" value="notice"> <input
 			type="hidden" name="pg" id="pg" value="">
 	</form>
+	
+	<br>
+	<h2 align="center">[ 아파트 실거래가 목록 ] </h2>
 
 	<section id="blog" class="blog">
 		<div class="container aos-init aos-animate" data-aos="fade-up">
@@ -69,7 +72,7 @@
 						<article class="entry">
 							<h2 class="entry-title">
 								<a
-									onclick="document.location.href='${root}/apt/show?no=${deal.no}'">${deal.aptName}</a>
+									onclick="document.location.href='${root}/house/show?no=${deal.no}'">${deal.aptName}</a>
 							</h2>
 
 							<table class="table">
@@ -86,15 +89,7 @@
 									</tr>
 									<tr>
 										<th scope="row">거래액</th>
-										<td>${deal.dealAmount}원</td>
-									</tr>
-									<tr>
-										<th scope="row">거래일자</th>
-										<td>${deal.dealYear}-${deal.dealMonth}-${deal.dealDay}</td>
-									</tr>
-									<tr>
-										<th scope="row">건축년도</th>
-										<td>${deal.buildYear}</td>
+										<td>${deal.dealAmount} 원</td>
 									</tr>
 									<tr>
 										<th scope="row">면적</th>
@@ -104,15 +99,11 @@
 										<th scope="row">층</th>
 										<td>${deal.floor}</td>
 									</tr>
-									<tr>
-										<th scope="row">지번</th>
-										<td>${deal.jibun}</td>
-									</tr>
 								</tbody>
 							</table>
 							<div class="entry-content">
 								<div class="read-more">
-									<a href="blog-single.html">Read More</a>
+									<a onclick="document.location.href='${root}/house/show?no=${deal.no}'">Read More</a>
 								</div>
 							</div>
 						</article>

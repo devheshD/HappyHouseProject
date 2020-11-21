@@ -30,6 +30,9 @@ public class HouseController {
 	@Autowired
 	private ResidenceDealService residenceDealService;
 	
+	/**
+	 * Apt Information
+	 */
 	// initial list
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public String goAptSearch(Model model, @RequestParam Map<String, String> map) {
@@ -84,6 +87,23 @@ public class HouseController {
 		return "house/apt";
 	}
 	
+	@RequestMapping(value = "/show", method = RequestMethod.GET)
+	public String show(HttpServletRequest request){
+		int dealno = Integer.parseInt(request.getParameter("no"));
+		try {
+			AptDealDto house = aptDealService.show(dealno);
+			HttpSession session = request.getSession();
+			session.setAttribute("deal", house);
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("msg", "상세정보 조회 중 문제가 발생했습니다.");
+		}
+		return "house/aptDetail";
+	}
+	
+	/**
+	 * residence Information
+	 */
 	@RequestMapping(value = "/searchRes", method = RequestMethod.GET)
 	public String goResSearch(Model model, @RequestParam Map<String, String> map) {
 		String spp = map.get("spp");
@@ -157,20 +177,6 @@ public class HouseController {
 		}
 
 		return "house/searchResList";
-	}
-	
-	@RequestMapping(value = "/show", method = RequestMethod.GET)
-	public String show(HttpServletRequest request){
-		int dealno = Integer.parseInt(request.getParameter("no"));
-		try {
-			AptDealDto house = aptDealService.show(dealno);
-			HttpSession session = request.getSession();
-			session.setAttribute("deal", house);
-		} catch (Exception e) {
-			e.printStackTrace();
-			request.setAttribute("msg", "상세정보 조회 중 문제가 발생했습니다.");
-		}
-		return "house/showApt";
 	}
 	
 	@RequestMapping(value = "/showDetailDeal", method = RequestMethod.GET)
