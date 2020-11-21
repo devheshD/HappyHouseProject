@@ -3,7 +3,7 @@
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
 <script type="text/javascript">
 	function back() {
-		document.location.href = "${root}/house/search?pg=1";
+		 window.history.back();
 	}
 </script>
 <body>
@@ -28,7 +28,7 @@
 					</tr>
 					<tr>
 						<th scope="row">거래액</th>
-						<td>${deal.dealAmount} 원</td>
+						<td>${deal.dealAmount} 만원</td>
 					</tr>
 					<tr>
 						<th scope="row">거래일자</th>
@@ -40,11 +40,11 @@
 					</tr>
 					<tr>
 						<th scope="row">면적</th>
-						<td>${deal.area}</td>
+						<td>${deal.area} m<sup>2</sup></td>
 					</tr>
 					<tr>
 						<th scope="row">층</th>
-						<td>${deal.floor}</td>
+						<td>${deal.floor} 층</td>
 					</tr>
 					<tr>
 						<th scope="row">지번</th>

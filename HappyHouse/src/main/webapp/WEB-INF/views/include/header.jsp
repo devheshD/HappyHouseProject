@@ -58,7 +58,7 @@
 							<a href="${root }/house/search?pg=1" id="aptSearchBtn">Apartment</a>
 						</li>
 						<li>
-							<a href="${root }/housing/apt" id="housingSearchBtn">Housing</a>
+							<a href="${root }/house/searchDeal?pg=1" id="housingSearchBtn">Housing</a>
 						</li>
 						<li>
 							<a href="#" id="coronaSearchBtn">Corona</a>
