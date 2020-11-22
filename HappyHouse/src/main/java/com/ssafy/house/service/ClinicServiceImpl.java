@@ -18,7 +18,7 @@ public class ClinicServiceImpl implements ClinicService {
 	ClinicRepository repo;
 	
 	@Override
-	public List<ClinicCoronaDto> searchAll(String page) {
+	public List<ClinicCoronaDto> healthCenterAll(String page) {
 		Map map = new HashMap<String, Integer>();
 		int curPage = Integer.parseInt(page);
 		int pageCnt = 10;						// 보여줄 게시글의 갯수
@@ -26,12 +26,12 @@ public class ClinicServiceImpl implements ClinicService {
 		map.put("start", start);
 		map.put("pageCnt", pageCnt);
 		
-		return repo.searchAll(map);
+		return repo.healthCenterAll(map);
 	}
 	
 
 	@Override
-	public List<ClinicCoronaDto> searchHealthCenter(String page, String clinicName) {
+	public List<ClinicCoronaDto> searchHealthCenterName(String page, String clinicName) {
 		Map map = new HashMap<String, Object>();
 		int curPage = Integer.parseInt(page);
 		int pageCnt = 10;						// 보여줄 게시글의 갯수
@@ -40,12 +40,12 @@ public class ClinicServiceImpl implements ClinicService {
 		map.put("pageCnt", pageCnt);
 		map.put("clinicName", clinicName);
 		
-		return repo.searchHealthCenter(map);
+		return repo.searchHealthCenterName(map);
 	}	
 
 
 	@Override
-	public List<ClinicCoronaDto> searchCity(String page, String city) {
+	public List<ClinicCoronaDto> searchHealthCenterCity(String page, String city) {
 		Map map = new HashMap<String, Object>();
 		int curPage = Integer.parseInt(page);
 		int pageCnt = 10;						// 보여줄 게시글의 갯수
@@ -54,20 +54,20 @@ public class ClinicServiceImpl implements ClinicService {
 		map.put("pageCnt", pageCnt);
 		map.put("city", city);
 		
-		return repo.searchCity(map);
+		return repo.searchHealthCenterCity(map);
 	}
 	
 	@Override
-	public ClinicCoronaDto detailPage(String name) {
-		return repo.detailPage(name);
+	public ClinicCoronaDto detailHealthCenterPage(String name) {
+		return repo.detailHealthCenterPage(name);
 	}
 	
 	@Override
-	public PageNavigation makePageNavigation(Map<String, String> map) {
+	public PageNavigation makePageNavigationHealthCenter(Map<String, String> map) {
 		int naviSize = 10;
 		int currentPage = Integer.parseInt(map.get("page"));    // 현재 페이지 번호
 		int sizePerPage = naviSize;								// 페이지 글 갯수
-		int totalCount = repo.getTotalCount(map);
+		int totalCount = repo.getHealthCenterTotalCount(map);
 		
 		PageNavigation pageNavigation = new PageNavigation();
 		pageNavigation.setCurrentPage(currentPage);

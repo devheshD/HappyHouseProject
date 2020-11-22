@@ -24,11 +24,11 @@ public class ClinicController {
 	
 	@GetMapping("/corona")
 	public String corona(@RequestParam String page, Model model) {
-		List<ClinicCoronaDto> list = service.searchAll(page);
+		List<ClinicCoronaDto> list = service.healthCenterAll(page);
 		// 페이징 처리
 		Map map = new HashMap<String, String>();
 		map.put("page", page);
-		PageNavigation pageNavigation = service.makePageNavigation(map);
+		PageNavigation pageNavigation = service.makePageNavigationHealthCenter(map);
 		
 		model.addAttribute("coronaClinicList", list);
 		model.addAttribute("pageNavigation", pageNavigation);
@@ -43,19 +43,16 @@ public class ClinicController {
 		
 		// 보건소 이름으로 검색시
 		if (keyword.equals("healthCenterName")) {
-			list = service.searchHealthCenter(page, word);
-			for (int i = 0; i < list.size();i++) {
-				System.out.println(list.get(i).getCity());
-			}
+			list = service.searchHealthCenterName(page, word);
 		} 
 		// 도시로 으로 검색시
 		else if (keyword.equals("city")) {
-			list = service.searchCity(page, word);
+			list = service.searchHealthCenterCity(page, word);
 		}
 		
 		map.put("page", page);
 		map.put("searchKeyword", word);
-		PageNavigation pageNavigation = service.makePageNavigation(map);
+		PageNavigation pageNavigation = service.makePageNavigationHealthCenter(map);
 		
 		model.addAttribute("pageNavigation", pageNavigation);
 		model.addAttribute("coronaClinicList", list);
@@ -65,10 +62,24 @@ public class ClinicController {
 	
 	@GetMapping("/coronaDetail")
 	public String detailPage(@RequestParam String name, Model model) {
-		ClinicCoronaDto dto = service.detailPage(name);
+		ClinicCoronaDto dto = service.detailHealthCenterPage(name);
 		model.addAttribute("detail", dto);
 		
 		return "clinic/coronaDetail";
+	}
+	
+	@GetMapping("/hospital")
+	public String hospital(@RequestParam String page, Model model) {
+//		List<ClinicCoronaDto> list = service.searchAll(page);
+		// 페이징 처리
+		Map map = new HashMap<String, String>();
+		map.put("page", page);
+		PageNavigation pageNavigation = service.makePageNavigationHealthCenter(map);
+		
+//		model.addAttribute("hospitalList", list);
+		model.addAttribute("pageNavigation", pageNavigation);
+		
+		return "clinic/corona";
 	}
 	
 }
