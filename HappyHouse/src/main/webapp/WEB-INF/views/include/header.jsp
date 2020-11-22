@@ -64,7 +64,7 @@
 							<a href="${root }/clinic/corona?page=1" id="coronaSearchBtn">Corona</a>
 						</li>
 						<li>
-							<a href="${root }/clinic/hospital" id="hospitalSearchBtn">Hospital</a>
+							<a href="${root }/clinic/hospital?page=1" id="hospitalSearchBtn">Hospital</a>
 						</li>
 						<li>
 							<a href="#" id="announceBtn">Announcement</a>
