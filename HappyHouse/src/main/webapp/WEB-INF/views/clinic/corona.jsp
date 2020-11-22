@@ -103,7 +103,7 @@
 		if (word == "") {
 			alert("검색어를 입력해주세요.");
 		} else {
-			location.href = "${root}/clinic/search?page=1&word=" + word + "&keyword=" + key;
+			location.href = "${root}/clinic/searchHealthCenter?page=1&word=" + word + "&keyword=" + key;
 		}
 		
 	});

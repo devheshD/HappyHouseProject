@@ -36,38 +36,42 @@
 			<div class="row">
 				<div class="col-lg-2"></div>
 				<div class="col-lg-8 entries">
-<%-- 					<c:forEach var="list" items="${coronaClinicList}">
- --%>						<article class="entry">
+ 					<c:forEach var="list" items="${hospitalList}">
+ 						<article class="entry">
 							<h2 class="entry-title">
-								<%-- <a href="#">${list.clinic_name}</a> --%>
+								 <a href="#">${list.hospital_name}</a>
 							</h2>
 							<table class="table">
 								<thead class="thead-dark">
 									<tr>
 										<th scope="row">도시</th>
+										<td>${list.city}</td>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-										<th scope="row">주소</th>
+										<th scope="row">구군</th>
+										<td>${list.gugun}</td>
 									</tr>
 									<tr>
-										<th scope="row">운영시간</th>
+										<th scope="row">업데이트 날짜</th>
+										<td>${list.update_date}</td>
 									</tr>
 									<tr>
 										<th scope="row">전화번호</th>
+										<td>${list.phone_number}</td>
 									</tr>
 								</tbody>
 							</table>
 							<div class="entry-content">
 								<div class="read-more">
-									<%-- <a href="${root }/clinic/coronaDetail?name=${list.clinic_name}">Read More</a> --%>
+								   <a href="${root }/clinic/hospitalDetail?name=${list.hospital_name}">Read More</a>
 								</div>
 							</div>
 						</article>
 						<!-- End apt entry -->
-<%-- 					</c:forEach>
- --%>					<!-- End apt list -->
+ 					</c:forEach>
+					<!-- End apt list -->
 					<br>
 					<table align="center">
 						<tr>

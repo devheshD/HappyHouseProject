@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ssafy.house.dto.ClinicCoronaDto;
+import com.ssafy.house.dto.ClinicHospitalDto;
 import com.ssafy.house.service.ClinicService;
 import com.ssafy.house.util.PageNavigation;
 
@@ -28,7 +29,7 @@ public class ClinicController {
 		// 페이징 처리
 		Map map = new HashMap<String, String>();
 		map.put("page", page);
-		PageNavigation pageNavigation = service.makePageNavigationHealthCenter(map);
+		PageNavigation pageNavigation = service.makePageNavigation(map, "healthCenter");
 		
 		model.addAttribute("coronaClinicList", list);
 		model.addAttribute("pageNavigation", pageNavigation);
@@ -36,8 +37,8 @@ public class ClinicController {
 		return "clinic/corona";
 	}
 	
-	@GetMapping("/search")
-	public String healthCenter(@RequestParam String page, @RequestParam String word,  @RequestParam String keyword, Model model) {
+	@GetMapping("/searchHealthCenter")
+	public String searchHealthCenter(@RequestParam String page, @RequestParam String word,  @RequestParam String keyword, Model model) {
 		Map map = new HashMap<String, String>();
 		List<ClinicCoronaDto> list = null;
 		
@@ -45,14 +46,14 @@ public class ClinicController {
 		if (keyword.equals("healthCenterName")) {
 			list = service.searchHealthCenterName(page, word);
 		} 
-		// 도시로 으로 검색시
+		// 도시로 검색시
 		else if (keyword.equals("city")) {
 			list = service.searchHealthCenterCity(page, word);
 		}
 		
 		map.put("page", page);
 		map.put("searchKeyword", word);
-		PageNavigation pageNavigation = service.makePageNavigationHealthCenter(map);
+		PageNavigation pageNavigation = service.makePageNavigation(map, "healthCenter");
 		
 		model.addAttribute("pageNavigation", pageNavigation);
 		model.addAttribute("coronaClinicList", list);
@@ -70,16 +71,48 @@ public class ClinicController {
 	
 	@GetMapping("/hospital")
 	public String hospital(@RequestParam String page, Model model) {
-//		List<ClinicCoronaDto> list = service.searchAll(page);
+		List<ClinicHospitalDto> list = service.hospitalAll(page);
 		// 페이징 처리
 		Map map = new HashMap<String, String>();
 		map.put("page", page);
-		PageNavigation pageNavigation = service.makePageNavigationHealthCenter(map);
+		PageNavigation pageNavigation = service.makePageNavigation(map, "hospital");
 		
-//		model.addAttribute("hospitalList", list);
+		model.addAttribute("hospitalList", list);
 		model.addAttribute("pageNavigation", pageNavigation);
 		
-		return "clinic/corona";
+		return "clinic/hospital";
+	}
+	
+	@GetMapping("/searchHospital")
+	public String searchHospital(@RequestParam String page, @RequestParam String word,  @RequestParam String keyword, Model model) {
+		Map map = new HashMap<String, String>();
+		List<ClinicHospitalDto> list = null;
+		
+		// 병원 이름으로 검색시
+		if (keyword.equals("hospitalName")) {
+			list = service.searchHospitalName(page, word);
+		} 
+		// 구군 으로 검색시
+		else if (keyword.equals("gugun")) {
+			list = service.searchHospitalGugun(page, word);
+		}
+
+		map.put("page", page);
+		map.put("searchKeyword", word);
+		PageNavigation pageNavigation = service.makePageNavigation(map, "hospital");
+		
+		model.addAttribute("pageNavigation", pageNavigation);
+		model.addAttribute("hospitalList", list);
+		
+		return "clinic/hospital";
+	}
+	
+	@GetMapping("/hospitalDetail")
+	public String detailHospitalPage(@RequestParam String name, Model model) {
+		ClinicHospitalDto dto = service.detailHospitalPage(name);
+		model.addAttribute("detail", dto);
+		
+		return "clinic/hosptialDetail";
 	}
 	
 }

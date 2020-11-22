@@ -3,7 +3,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="com.ssafy.house.repository.ClinicRepository">
-<select id="healthCenterAll" parameterType="map" resultType="ClinicCoronaDto">
+	<select id="healthCenterAll" parameterType="map" resultType="ClinicCoronaDto">
 		select update_date, testable, city, gugun, clinic_name, address,opening_hours_weekday, opening_hours_sat, opening_hours_sun_ph, phone
 		from coronaclinic
 		limit #{start}, #{pageCnt}
@@ -35,8 +35,40 @@
 		select update_date, testable, city, gugun, clinic_name, address, opening_hours_weekday, opening_hours_sat, opening_hours_sun_ph, phone
 		from coronaclinic
 		where clinic_name like #{name}
-		
 	</select>
 	
+	<select id="hospitalAll" parameterType="map" resultType="ClinicHospitalDto">
+		select update_date,city,gugun,hospital_name,address,type,phone_number
+		from coronahospital
+		limit #{start}, #{pageCnt}
+	</select>
+	
+	<select id="getHospitalTotalCount" parameterType="map" resultType="int">
+		select count(update_date)
+		from coronahospital
+		<if  test="searchKeyword != null">
+			where hospital_name like concat('%', #{searchKeyword}, '%')
+		</if>
+	</select>
+	
+	<select id="searchHospitalName" parameterType="map" resultType="ClinicHospitalDto">
+		select update_date,city,gugun,hospital_name,address,type,phone_number
+		from coronahospital
+		where hospital_name like concat('%', #{hospitalName}, '%')
+		limit #{start}, #{pageCnt}
+	</select>
+	
+	<select id="searchHospitalGugun" parameterType="map" resultType="ClinicHospitalDto">
+		select update_date,city,gugun,hospital_name,address,type,phone_number
+		from coronahospital
+		where gugun like concat('%', #{gugun}, '%')
+		limit #{start}, #{pageCnt}
+	</select>
+	
+	<select id="detailHospitalPage" parameterType="String" resultType="ClinicHospitalDto">
+		select update_date,city,gugun,hospital_name,address,type,phone_number
+		from coronahospital
+		where hospital_name like #{name}
+	</select>
 	
 </mapper>
