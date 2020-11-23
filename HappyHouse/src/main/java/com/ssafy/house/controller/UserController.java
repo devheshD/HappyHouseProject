@@ -51,4 +51,24 @@ public class UserController {
 
 		return "redirect:/";
 	}
+	
+	@PostMapping("/modify")
+	public String modify(@RequestParam Map<String, String> map, HttpSession session) {
+		String phone = map.get("tel1") + "-" + map.get("tel2") + "-" + map.get("tel3");
+		map.put("phone", phone);
+		service.modify(map);
+		// 재로그인을 위한 세션 초기화
+		session.invalidate();
+		
+		return "redirect:/";
+	}
+	
+	@GetMapping("/delete")
+	public String delete(String userid, HttpSession session) {
+		service.delete(userid);
+	
+		session.invalidate();
+		
+		return "redirect:/";
+	}
 }

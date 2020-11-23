@@ -13,4 +13,13 @@
 		insert into user(id, password, name, addr, phone) values (#{userid}, #{userpwd}, #{username}, #{address}, #{phone})
 	</insert>
 	
+	<update id="modify" parameterType="map">
+		update user set password = #{userpwd}, name = #{username}, addr = #{address}, phone = #{phone}
+		where id = #{userid}
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		delete from user
+		where id = #{userid}
+	</delete>
 </mapper>

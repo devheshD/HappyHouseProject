@@ -22,9 +22,6 @@
 					<c:if test="${msg ne null }" >
 						<p style="color: #f00;">${msg }</p>
 					</c:if>
-					<div align="right">
-						<a href="">비밀번호 찾기</a>
-					</div>
 					<!-- Modal footer -->
 					<div class="modal-footer">
 						<input id="getLoginBtn" type="button" class="btn btn-primary" value="Login">

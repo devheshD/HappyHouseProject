@@ -1,23 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<div class="modal" id="SignUpModal">
+<div class="modal" id="modifyModal">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<!-- Modal Header -->
 			<div class="modal-header">
-				<h4 class="modal-title">Sign Up</h4>
+				<h4 class="modal-title">회원 정보 수정</h4>
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
 			<!-- Modal body -->
 			<div class="modal-body">
-				<form id="memberform" method="post" action="">
+				<form id="deleteForm" method="get" action="">
 				<div class="form-group" align="left">
 					<label for="name"><strong>이름</strong></label> 
 					<input type="text" class="form-control" id="username" name="username" placeholder="이름을 입력하세요...">
 				</div>
 				<div class="form-group" align="left">
 					<label for=""><strong>아이디</strong></label> 
-					<input type="text" class="form-control" id="userid" name="userid" placeholder="아이디를 입력하세요...">
+					<input type="text" class="form-control" id="userid" name="userid" value="${userDto.id }" readonly="readonly">
 				</div>
 				<div class="form-group" align="left">
 					<label for=""><strong>비밀번호</strong></label> 
@@ -48,8 +48,8 @@
 					<input type="text" class="form-control" id="address" name="address" placeholder="주소를 입력하세요...">
 				</div>
 				<div class="form-group" align="center">
-					<button type="button" class="btn btn-primary" id="registerBtn">회원가입</button>
-					<button type="reset" class="btn btn-warning">초기화</button>
+					<button type="button" class="btn btn-primary" id="submitModifyBtn">회원 수정</button>
+					<button type="button" class="btn btn-warning" id="submitDeleteBtn">회원 탈퇴</button>
 				</div>
 			</form>
 			</div>
@@ -58,16 +58,15 @@
 </div>
 
 <script type="text/javascript">
-	$("#registerBtn").click(function() {
+	// 회원 정보 수정
+	$("#submitModifyBtn").click(function() {
 		var pw = $("#userpwd").val();
 		var num = pw.search(/[0-9]/g);
 		var eng = pw.search(/[a-z]/ig);
 		var spe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+		
 		if ($("#username").val() == "") {
 			alert("이름을 입력해주세요.");
-			return;
-		} else if ($("#userid").val() == "") {
-			alert("아이디를 입력해주세요.");
 			return;
 		} else if ($("#userpwd").val() != $("#pwdcheck").val()) {
 			alert("비밀번호가 일치하지 않습니다.");
@@ -82,8 +81,17 @@
 			alert("주소를 입력해주세요.");
 			return;
 		} else {
-			$("#memberform").attr("action", "${root}/user/signUp").submit();
-			alert("축하드립니다. 회원가입이 완료되었습니다.");
+			$("#modifyForm").attr("action", "${root}/user/modify").submit();
+			alert("회원수정이 완료되었습니다. 다시 로그인해주세요.");
 		}
 	});
+	
+	// 회원 정보 탈퇴
+	$("#submitDeleteBtn").click(function() {
+		if (confirm("정말로 탈퇴하시겠습니까?")) {
+			$("#deleteForm").attr("action", "${root}/user/delete").submit();
+			alert("회원 탈퇴가 완료되었습니다.");
+		}
+	});
+	
 </script>

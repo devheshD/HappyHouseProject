@@ -80,7 +80,7 @@
                      </c:when>
                      <c:otherwise>
                         <li id="modifyLi">
-                           <a href="#">${userDto.id } 님 반갑습니다.</a>
+                           <a href="#" id="modifyBtn" data-toggle="modal" data-target="#modifyModal">${userDto.id } 님 반갑습니다.</a>
                         </li>
                         <li id="logutLi">
                            <a href="${root }/user/logout" id="logoutBtn">Logout</a>
@@ -116,7 +116,16 @@
 
 <!-- End Hero -->
 <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-<!-- Sign Up Modal -->
-<%@ include file="/WEB-INF/views/user/signUp.jsp"%>
-<!-- Login Modal -->
-<%@ include file="/WEB-INF/views/user/login.jsp"%>
+<c:choose>
+ <c:when test="${userDto.id eq null }">
+	<!-- Sign Up Modal -->
+	<%@ include file="/WEB-INF/views/user/signUp.jsp"%>
+	
+	<!-- Login Modal -->
+	<%@ include file="/WEB-INF/views/user/login.jsp"%>		 
+ </c:when>
+ <c:otherwise>
+	<!-- Modify Modal -->
+	<%@ include file="/WEB-INF/views/user/modify.jsp"%>
+ </c:otherwise>
+</c:choose>

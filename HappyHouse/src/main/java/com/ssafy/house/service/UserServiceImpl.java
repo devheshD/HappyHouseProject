@@ -26,4 +26,15 @@ public class UserServiceImpl implements UserService {
 		repo.signUp(map);
 	}
 
+	@Override
+	public void modify(Map<String, String> map) {
+		repo.modify(map);
+		
+	}
+
+	@Override
+	public void delete(String userId) {
+		repo.delete(userId);
+	}
+
 }
