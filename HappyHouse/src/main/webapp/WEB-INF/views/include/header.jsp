@@ -52,7 +52,7 @@
 				<nav class="nav-menu d-none d-lg-block">
 					<ul>				
 						<li class="active">
-							<a href="#">Home</a>
+							<a href="/">Home</a>
 						</li>
 						<li>
 							<a href="${root }/house/search?pg=1" id="aptSearchBtn">Apartment</a>
