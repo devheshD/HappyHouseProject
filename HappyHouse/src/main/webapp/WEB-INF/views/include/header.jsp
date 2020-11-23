@@ -67,7 +67,7 @@
 							<a href="${root }/clinic/hospital?page=1" id="hospitalSearchBtn">Hospital</a>
 						</li>
 						<li>
-							<a href="#" id="announceBtn">Announcement</a>
+							<a href="${root}/notice/list?pg=1" id="announceBtn">Announcement</a>
 						</li>
 						<li>
 							<a href="#" id="siteMapBtn">SiteMap</a>
