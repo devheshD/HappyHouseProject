@@ -28,7 +28,6 @@ public class UserController {
 		
 		if (userDto != null) {
 			session.setAttribute("userDto", userDto);
-			model.addAttribute("user", userDto);
 		} else {
 			model.addAttribute("msg", "아이디와 패스워드를 확인해주세요.");
 		}

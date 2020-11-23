@@ -73,7 +73,7 @@
                      <a href="#" id="siteMapBtn">SiteMap</a>
                   </li>
                   <c:choose>
-                     <c:when test="${user.id eq null }">
+                     <c:when test="${userDto.id eq null }">
                         <li id="loginLi">
                            <a href="#" id="loginBtn">Login</a>
                         </li>
@@ -83,7 +83,7 @@
                      </c:when>
                      <c:otherwise>
                         <li id="modifyLi">
-                           <a href="#">${user.id } 님 반갑습니다.</a>
+                           <a href="#">${userDto.id } 님 반갑습니다.</a>
                         </li>
                         <li id="logutLi">
                            <a href="${root }/user/logout" id="logoutBtn">Logout</a>
