@@ -1,6 +1,5 @@
 package com.ssafy.house.controller;
 
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -31,10 +30,10 @@ public class NoticeController {
 	public String goSearchAll(Model model, @RequestParam Map<String, String> map) {
 		String spp = map.get("spp");
 		map.put("spp", spp != null ? spp : "10");// sizePerPage
-
 		try {
 			List<NoticeDto> list = noticeService.list(map);
 			PageNavigation pageNavigation = noticeService.makePageNavigation(map);
+			
 			model.addAttribute("list", list);
 			model.addAttribute("navigation", pageNavigation);
 		} catch (Exception e) {
@@ -81,6 +80,7 @@ public class NoticeController {
 		NoticeDto noticeDto;
 		try {
 			noticeDto = noticeService.show(no);
+			
 			session.setAttribute("list", noticeDto);
 			model.addAttribute("list", noticeDto);
 		} catch (Exception e) {
@@ -107,6 +107,7 @@ public class NoticeController {
 		HttpSession session = request.getSession();
 		NoticeDto noticeDto = new NoticeDto();
 		UserDto memberDto = (UserDto) session.getAttribute("userDto");
+		
 		noticeDto.setId(memberDto.getId());
 		noticeDto.setTitle(request.getParameter("title"));
 		noticeDto.setContent(request.getParameter("content"));

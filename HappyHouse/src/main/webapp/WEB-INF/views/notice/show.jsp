@@ -43,6 +43,7 @@
 						</div>
 
 						<div class="entry-content">
+							<br>
 							<p>${list.content}</p>
 						</div>
 

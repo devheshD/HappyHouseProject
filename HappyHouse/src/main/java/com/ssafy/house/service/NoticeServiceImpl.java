@@ -30,6 +30,11 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
+	public NoticeDto getInfo(int no) throws SQLException {
+		return noticeReop.show(no);
+	}
+	
+	@Override
 	public void modifyInfo(NoticeDto noticeDto) throws SQLException {
 		noticeReop.modifyInfo(noticeDto);
 	}
@@ -37,11 +42,6 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public void delete(int no) throws SQLException {
 		noticeReop.delete(no);
-	}
-
-	@Override
-	public NoticeDto getInfo(int no) throws SQLException {
-		return noticeReop.show(no);
 	}
 
 	public PageNavigation makePageNavigation(Map<String, String> map)

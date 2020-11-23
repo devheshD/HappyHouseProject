@@ -12,7 +12,5 @@ public interface NoticeRepository {
 	public void write(NoticeDto noticeDto) throws SQLException;
 	public void modifyInfo(NoticeDto noticeDto) throws SQLException;
 	public void delete(int no) throws SQLException;
-	
 	public NoticeDto show(int no) throws SQLException;
-	public NoticeDto getInfo(int no) throws SQLException;
 }
