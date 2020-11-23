@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ssafy.house.dto.AptDealDto;
 import com.ssafy.house.dto.AptInfoDto;
 import com.ssafy.house.dto.SidoCodeDto;
 import com.ssafy.house.dto.SidoGugunCodeDto;
@@ -34,5 +35,10 @@ public class MainServiceImpl implements MainService {
 	@Override
 	public List<AptInfoDto> getAptInDong(String dong) throws Exception {
 		return mainRepository.getAptInDong(dong);
+	}
+	
+	@Override
+	public List<AptDealDto> getInfoInApt(String aptName) throws Exception {
+		return mainRepository.getInfoInApt(aptName);
 	}
 }

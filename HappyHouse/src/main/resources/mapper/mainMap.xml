@@ -31,4 +31,11 @@
 		ORDER BY AptName
 	</select>
 	
+	<select id="getInfoInApt" parameterType="String" resultType="AptDealDto">
+		select dealAmount, buildYear, dealYear,dealMonth, dealDay, left(area, 5) area, floor
+		from housedeal
+		where AptName= #{AptName}
+		ORDER BY dealAmount
+	</select>
+	
 </mapper>

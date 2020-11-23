@@ -7,8 +7,7 @@ public class NoticeDto {
 	private String content;
 	private String regtime;
 
-	public NoticeDto() {
-	};
+	public NoticeDto() {};
 
 	public NoticeDto(int no, String id, String title, String content, String regtime) {
 		this.no = no;
