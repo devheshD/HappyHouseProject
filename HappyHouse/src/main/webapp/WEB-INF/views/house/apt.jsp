@@ -32,12 +32,15 @@
 		<input type="hidden" name="act" id="act" value="notice"> <input
 			type="hidden" name="pg" id="pg" value="">
 	</form>
-	
-	<br>
-	<h2 align="center">[ 아파트 실거래가 목록 ] </h2>
 
 	<section id="blog" class="blog">
 		<div class="container aos-init aos-animate" data-aos="fade-up">
+			<div class="row">
+				<div class="col-lg-4"></div>
+				<div class="col-lg-7">
+					<h2 style="font-weight: bold;">아파트 실거래가 목록</h2>
+				</div>
+			</div>
 			<div class="row">
 				<div class="col-lg-3"></div>
 				<div class="col-lg-7 entries">
@@ -89,21 +92,23 @@
 									</tr>
 									<tr>
 										<th scope="row">거래액</th>
-										<td>${deal.dealAmount} 만원</td>
+										<td>${deal.dealAmount}만원</td>
 									</tr>
 									<tr>
 										<th scope="row">면적</th>
-										<td>${deal.area} m<sup>2</sup></td>
+										<td>${deal.area}m<sup>2</sup></td>
 									</tr>
 									<tr>
 										<th scope="row">층</th>
-										<td>${deal.floor} 층</td>
+										<td>${deal.floor}층</td>
 									</tr>
 								</tbody>
 							</table>
 							<div class="entry-content">
 								<div class="read-more">
-									<a onclick="document.location.href='${root}/house/show?no=${deal.no}'">Read More</a>
+									<a
+										onclick="document.location.href='${root}/house/show?no=${deal.no}'">Read
+										More</a>
 								</div>
 							</div>
 						</article>

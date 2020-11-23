@@ -18,18 +18,22 @@
 		var sel = document.getElementById("key");
 		var type = document.getElementById("key2");
 		var tmp = document.getElementById("word");
-		
+
 		if (sel.options[sel.selectedIndex].value == "aptname") {
-			if(type.options[type.selectedIndex].value == "deal")
-				document.location.href = "${root}/house/searchDealBdName?pg=1&word=" + tmp.value;
+			if (type.options[type.selectedIndex].value == "deal")
+				document.location.href = "${root}/house/searchDealBdName?pg=1&word="
+						+ tmp.value;
 			else
-				document.location.href = "${root}/house/searchRentBdName?pg=1&word=" + tmp.value;
+				document.location.href = "${root}/house/searchRentBdName?pg=1&word="
+						+ tmp.value;
 		} else if (sel.options[sel.selectedIndex].value == "dongname") {
-			if(type.options[type.selectedIndex].value == "deal")
-				document.location.href = "${root}/house/searchDealDongName?&pg=1&word=" + tmp.value;
-			else 
-				document.location.href = "${root}/house/searchRentDongName?pg=1&word=" + tmp.value;
-		
+			if (type.options[type.selectedIndex].value == "deal")
+				document.location.href = "${root}/house/searchDealDongName?&pg=1&word="
+						+ tmp.value;
+			else
+				document.location.href = "${root}/house/searchRentDongName?pg=1&word="
+						+ tmp.value;
+
 		}
 	}
 	function pageMove(pg) {
@@ -50,16 +54,19 @@
 			type="hidden" id="pageType" value="${type}" />
 	</form>
 
-	<br>
-	<c:if test="${type eq 'buy'}">
-		<h2 align="center">[ 주택 매매 목록 ]</h2>
-	</c:if>
-	<c:if test="${type eq 'rent'}">
-		<h2 align="center">[ 주택 전월세 목록 ]</h2>
-	</c:if>
-
 	<section id="blog" class="blog">
 		<div class="container aos-init aos-animate" data-aos="fade-up">
+			<div class="row">
+				<div class="col-lg-5"></div>
+				<div class="col-lg-6">
+					<c:if test="${type eq 'buy'}">
+						<h2 style="font-weight: bold;">주택 매매 목록</h2>
+					</c:if>
+					<c:if test="${type eq 'rent'}">
+						<h2 style="font-weight: bold;">주택 전월세 목록 </h2>
+					</c:if>
+				</div>
+			</div>
 			<div class="row">
 				<div class="col-lg-2"></div>
 				<div class="col-lg-8 entries">
@@ -84,7 +91,6 @@
 						<button type="button" class="btn btn-primary"
 							onclick="javascript:search();">검색</button>
 					</form>
-
 				</div>
 			</div>
 			<div class="row">
@@ -116,15 +122,15 @@
 									</tr>
 									<tr>
 										<th scope="row">거래액</th>
-										<td>${deal.dealAmount} 만원</td>
+										<td>${deal.dealAmount}만원</td>
 									</tr>
 									<tr>
 										<th scope="row">면적</th>
-										<td>${deal.area} m<sup>2</sup></td>
+										<td>${deal.area}m<sup>2</sup></td>
 									</tr>
 									<tr>
 										<th scope="row">층</th>
-										<td>${deal.floor} 층</td>
+										<td>${deal.floor}층</td>
 									</tr>
 								</tbody>
 							</table>
@@ -165,19 +171,19 @@
 									</tr>
 									<tr>
 										<th scope="row">보증금</th>
-										<td>${rent.rentMoney} 만원</td>
+										<td>${rent.rentMoney}만원</td>
 									</tr>
 									<tr>
 										<th scope="row">거래액</th>
-										<td>${rent.bondFee} 만원</td>
+										<td>${rent.bondFee}만원</td>
 									</tr>
 									<tr>
 										<th scope="row">면적</th>
-										<td>${rent.area} m<sup>2</sup></td>
+										<td>${rent.area}m<sup>2</sup></td>
 									</tr>
 									<tr>
 										<th scope="row">층</th>
-										<td>${rent.floor} 층</td>
+										<td>${rent.floor}층</td>
 									</tr>
 								</tbody>
 							</table>
