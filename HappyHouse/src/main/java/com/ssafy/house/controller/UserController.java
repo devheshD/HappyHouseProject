@@ -28,18 +28,27 @@ public class UserController {
 		
 		if (userDto != null) {
 			session.setAttribute("userDto", userDto);
+			return "redirect:/";
 		} else {
 			model.addAttribute("msg", "아이디와 패스워드를 확인해주세요.");
+			return "index";
 		}
 		
-		return "index";
 	}
 	
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
 		
-		return "index";
+		return "redirect:/";
 	}
 	
+	@PostMapping("/signUp")
+	public String signUp(@RequestParam Map<String, String> map) {
+		String phone = map.get("tel1") + "-" + map.get("tel2") + "-" + map.get("tel3");
+		map.put("phone", phone);
+		service.signUp(map);
+
+		return "redirect:/";
+	}
 }

@@ -68,17 +68,14 @@
                   </li>
                   <li>
                      <a href="${root}/notice/list?pg=1" id="announceBtn">Announcement</a>
-                  </li>
-                  <li>
-                     <a href="#" id="siteMapBtn">SiteMap</a>
-                  </li>
+                  </li>           
                   <c:choose>
                      <c:when test="${userDto.id eq null }">
                         <li id="loginLi">
                            <a href="#" id="loginBtn">Login</a>
                         </li>
                         <li id="signUpLi">
-                           <a href="#" id="signUpBtn">SignUp</a>
+                           <a href="#" id="SignUpBtn">SignUp</a>
                         </li>
                      </c:when>
                      <c:otherwise>

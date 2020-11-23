@@ -21,4 +21,9 @@ public class UserServiceImpl implements UserService {
 		return userDto;
 	}
 
+	@Override
+	public void signUp(Map<String, String> map) {
+		repo.signUp(map);
+	}
+
 }

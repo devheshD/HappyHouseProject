@@ -37,7 +37,6 @@
 	</div>
 </div>
 <script>
-	
 	// 로그인 버튼 클릭 이벤트
 	$('#getLoginBtn').on('click', function() {
 		let userId = $('#userId').val();
@@ -51,6 +50,4 @@
 			$('#loginForm').submit();
 		}	
 	});
-	
-	
 </script>

@@ -6,5 +6,6 @@ import com.ssafy.house.dto.UserDto;
 
 public interface UserRepository {
 	public UserDto login(Map<String, String> map);
+	public void signUp(Map<String, String> map);
 
 }
