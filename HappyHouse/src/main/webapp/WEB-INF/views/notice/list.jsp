@@ -1,13 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
+<style>
+.table-hover tbody tr:hover {
+	background-color: #e6ecff;
+}
+</style>
 <script type="text/javascript">
 	function movewrite() {
 		location.href = "${root}/notice/mvwrite";
 	}
 	function pageMove(pg) {
 		document.getElementById("pg").value = pg;
-		document.getElementById("pageform").action = "${root}/notice.do?act=searchAll&pg="
+		document.getElementById("pageform").action = "${root}/notice/list?pg="
 				+ pg;
 		document.getElementById("pageform").submit();
 	}
@@ -19,13 +24,11 @@
 	</form>
 	<div class="container" align="center">
 		<br>
-		<h1>
-			<strong>공지사항</strong>
-		</h1>
+		<h2 style="font-weight: bold;">공지사항</h2>
 		<table class="table table-borderless">
-			<c:if test="${userinfo != null}">
+			<c:if test="${userDto != null}">
 				<tr>
-					<td align="right"><button type="button" class="btn btn-link"
+					<td align="right"><button type="button" class="btn btn-info"
 							onclick="javascript:movewrite();">글쓰기</button></td>
 				</tr>
 			</c:if>
@@ -33,18 +36,19 @@
 		<form id="searchform" method="get" class="form-inline" action="">
 			<input type="hidden" name="act" id="act" value="notice"> <input
 				type="hidden" name="pg" id="pg" value="1">
-			<table class="table table-active">
-				<tbody>
-					<tr class="table-info">
-						<th colspan="4">글번호></th>
-						<th colspan="4">제목</th>
-						<th colspan="4">작성자</th>
-						<th colspan="4">작성일</th>
+			<table class="table table-active table-hover">
+				<thead>
+					<tr class="table-primary">
+						<th scope="col" colspan="4">번호</th>
+						<th scope="col" colspan="4">제목</th>
+						<th scope="col" colspan="4">작성자</th>
+						<th scope="col" colspan="4">작성일</th>
 					</tr>
-				</tbody>
+				</thead>
+
 				<c:if test="${list.size() != 0}">
-					<c:forEach var="lists" items="${list}">
-						<tbody>
+					<tbody>
+						<c:forEach var="lists" items="${list}">
 							<tr class="table-info">
 								<td colspan="4" style="background-color: white;"><strong>${lists.no}</strong></td>
 								<td colspan="4" style="background-color: white;"><a
@@ -52,8 +56,17 @@
 								<td colspan="4" style="background-color: white;"><strong>${lists.id}</strong></td>
 								<td colspan="4" style="background-color: white;"><strong>${lists.regtime}</strong></td>
 							</tr>
+						</c:forEach>
+					<tbody>
+				</c:if>
+				<c:if test="${list.size() == 0}">
+					<table class="table table-active">
+						<tbody>
+							<tr class="table-info" align="center">
+								<td>작성된 글이 없습니다.</td>
+							</tr>
 						</tbody>
-					</c:forEach>
+					</table>
 				</c:if>
 			</table>
 		</form>
@@ -62,15 +75,6 @@
 				<td>${navigation.navigator}</td>
 			</tr>
 		</table>
-		<c:if test="${list.size() == 0}">
-			<table class="table table-active">
-				<tbody>
-					<tr class="table-info" align="center">
-						<td>작성된 글이 없습니다.</td>
-					</tr>
-				</tbody>
-			</table>
-		</c:if>
 	</div>
 </body>
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>

@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.ssafy.house.dto.MemberDto;
 import com.ssafy.house.dto.NoticeDto;
+import com.ssafy.house.dto.UserDto;
 import com.ssafy.house.service.NoticeService;
 import com.ssafy.house.util.PageNavigation;
 
@@ -26,17 +26,17 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 
+	// 공지사항 목록
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String goSearchAll(Model model, @RequestParam Map<String, String> map) {
 		String spp = map.get("spp");
 		map.put("spp", spp != null ? spp : "10");// sizePerPage
+
 		try {
 			List<NoticeDto> list = noticeService.list(map);
 			PageNavigation pageNavigation = noticeService.makePageNavigation(map);
 			model.addAttribute("list", list);
 			model.addAttribute("navigation", pageNavigation);
-
-			System.out.println("공지 이동");
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("에러발생");
@@ -44,29 +44,25 @@ public class NoticeController {
 		return "notice/list";
 	}
 
-	@RequestMapping(value = "/sitemap", method = RequestMethod.GET)
-	public String goSitemap() {
-		return "notice/sitemap";
-	}
-
+	// 글작성 페이지로 이동
 	@RequestMapping(value = "/mvwrite", method = RequestMethod.GET)
 	public String goWrite() {
 		return "notice/write";
 	}
 
+	// 글작성
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
 	public String doWrite(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		MemberDto memberDto = (MemberDto) session.getAttribute("userinfo");
+		UserDto memberDto = (UserDto) session.getAttribute("userDto");
 		NoticeDto noticeDto = new NoticeDto();
 		if (memberDto != null) {
 			noticeDto.setId(request.getParameter("id"));
 			noticeDto.setTitle(request.getParameter("title"));
 			noticeDto.setContent(request.getParameter("content"));
+			System.out.println(noticeDto);
 			try {
 				noticeService.write(noticeDto);
-				session = request.getSession();
-				session.setAttribute("list", noticeDto);
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("에러발생");
@@ -77,6 +73,7 @@ public class NoticeController {
 		return "/notice/writesuccess";
 	}
 
+	// 글 보기
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public String show(Model model, HttpServletRequest request) {
 		int no = Integer.parseInt(request.getParameter("no"));
@@ -94,34 +91,25 @@ public class NoticeController {
 		return "/notice/show";
 	}
 
+	// 글수정 페이지로 이동
 	@RequestMapping(value = "/mvmodify", method = RequestMethod.GET)
 	public String moveModify(HttpServletRequest request) {
-		int memberNo = Integer.parseInt(request.getParameter("no"));
 		HttpSession session = request.getSession();
-		MemberDto memberDto = (MemberDto) session.getAttribute("userinfo");
-		try {
-			NoticeDto nDto = new NoticeDto();
-			nDto.setId(memberDto.getId());
-			nDto = noticeService.getInfo(memberNo);
-			session.setAttribute("notice", nDto);
-			session.setAttribute("userinfo", memberDto);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("에러발생");
-			return "error/error";
-		}
+		UserDto memberDto = (UserDto) session.getAttribute("userDto");
+		session.setAttribute("userDto", memberDto);
+		
 		return "/notice/modify";
 	}
-	
+
+	// 글 수정
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public String modifyInfo(HttpServletRequest request){
+	public String modifyInfo(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		NoticeDto noticeDto = new NoticeDto();
-		MemberDto memberDto = (MemberDto) session.getAttribute("userinfo");
+		UserDto memberDto = (UserDto) session.getAttribute("userDto");
 		noticeDto.setId(memberDto.getId());
 		noticeDto.setTitle(request.getParameter("title"));
 		noticeDto.setContent(request.getParameter("content"));
-		System.out.println("no : 나와라좀 " + request.getParameter("no"));
 		noticeDto.setNo(Integer.parseInt(request.getParameter("no")));
 		noticeDto.setRegtime(request.getParameter("regtime"));
 		System.out.println(noticeDto);
@@ -136,9 +124,10 @@ public class NoticeController {
 		}
 		return "notice/show";
 	}
-	
+
+	// 글 삭제
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public String delete(HttpServletRequest request){
+	public String delete(HttpServletRequest request) {
 		int no = Integer.parseInt(request.getParameter("no"));
 		try {
 			noticeService.delete(no);
