@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
-<style>
-.table-hover tbody tr:hover {
-	background-color: #e6ecff;
-}
-</style>
 <script type="text/javascript">
 	function movewrite() {
 		location.href = "${root}/notice/mvwrite";
@@ -36,7 +31,7 @@
 		<form id="searchform" method="get" class="form-inline" action="">
 			<input type="hidden" name="act" id="act" value="notice"> <input
 				type="hidden" name="pg" id="pg" value="1">
-			<table class="table table-active table-hover">
+			<table class="table table-active">
 				<thead>
 					<tr class="table-primary">
 						<th scope="col" colspan="4">번호</th>
@@ -49,12 +44,12 @@
 				<c:if test="${list.size() != 0}">
 					<tbody>
 						<c:forEach var="lists" items="${list}">
-							<tr class="table-info">
-								<td colspan="4" style="background-color: white;"><strong>${lists.no}</strong></td>
-								<td colspan="4" style="background-color: white;"><a
+							<tr style="background-color: white;" onmouseover="this.style.background='#e6ecff'" onmouseout="this.style.background='white'">
+								<td colspan="4">${lists.no}</td>
+								<td colspan="4"><a
 									href="${root}/notice/show?no=${lists.no}"><strong>${lists.title}</strong></a></td>
-								<td colspan="4" style="background-color: white;"><strong>${lists.id}</strong></td>
-								<td colspan="4" style="background-color: white;"><strong>${lists.regtime}</strong></td>
+								<td colspan="4">${lists.id}</td>
+								<td colspan="4">${lists.regtime}</td>
 							</tr>
 						</c:forEach>
 					<tbody>
