@@ -51,7 +51,7 @@
             </h1>
             <nav class="nav-menu d-none d-lg-block">
                <ul>            
-                  <li class="active">
+                  <li>
                      <a href="/">Home</a>
                   </li>
                   <li>
