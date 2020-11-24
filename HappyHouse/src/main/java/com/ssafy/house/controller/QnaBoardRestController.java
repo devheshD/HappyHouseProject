@@ -39,7 +39,7 @@ public class QnaBoardRestController {
 		return qservice.insert(question);
 	}
 	
-	@PutMapping("/board")
+	@PutMapping("/board/{no}")
 	public int updateQuestion(@RequestBody QnaBoardDto question) {
 		return qservice.update(question);
 	}
