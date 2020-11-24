@@ -223,8 +223,7 @@
 			        <div class="tab-content">
 			          <div class="tab-pane show active" id="tab-1">
 			            <div class="row">
-			            	<div class="col-lg-1"></div>
-							<div class="col-lg-5 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+							<div class="col-lg-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
 								<h3>
 								<a href="https://land.naver.com/news/newsRead.nhn?type=headline&bss_ymd=20201124&prsco_id=005&arti_id=0001383841" target="_blank"  style="color: black">
 								'1가구 1주택'시대 열겠다더니 '공공임대주택' 살라는 정부.</a>
@@ -237,32 +236,30 @@
 								<div class="col-lg-6 order-1 order-lg-2 text-center aos-init aos-animate"
 									data-aos="fade-up" data-aos-delay="200">
 									<img src="https://imgnews.pstatic.net/image/005/2020/11/24/202011240010_11150924166232_1_20201124001120988.jpg?type=w647"
-										alt="" width="400">
+										alt="" width="500">
 								</div>
 							</div>
-							<div class="col-lg-5 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+							<div class="col-lg-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
 								<h3>
 								<a href="https://land.naver.com/news/newsRead.nhn?type=headline&bss_ymd=20201124&prsco_id=003&arti_id=0010202110" target="_blank" style="color: black">
-								"집값 오른다" 전망 불붙어…역대 최고치 찍었다</a>
+								"집값 오른다" 전망 불붙어…<br>역대 최고치 찍었다</a>
 								</h3>
 								<p class="font-italic">[서울=뉴시스] 조현아 기자 = 집값 상승 전망이 더 굳건해졌다. 
 								11월 소비자의 주택가격전망 지수가 역대 최고치를 기록한 것으로 나타났다. 
-								정부의 강력한 규제에도 집값 상승세가 지속되면서 앞으로 더 오를 것이라는 심리가 확산되고 있는 영향으로 풀이된다.
+								정부의 강력한 규제에도 집값 상승세가 지속되면서 앞으로 더 오를 것이라는 심리가 확산되고 있는 영향으로 풀이된다..
 								<a href="https://land.naver.com/news/newsRead.nhn?type=headline&bss_ymd=20201124&prsco_id=003&arti_id=0010202110" target="_blank">Read More</a>
 								</p>
 								<div class="col-lg-6 order-1 order-lg-2 text-center aos-init aos-animate"
 									data-aos="fade-up" data-aos-delay="200">
 									<img src="https://imgnews.pstatic.net/image/003/2020/11/24/NISI20201117_0016901682_web_20201117135347_20201124060117647.jpg?type=w647"
-										alt="" width="400">
+										alt="" width="500">
 								</div>
 							</div>
-							<div class="col-lg-1"></div>
 						</div>
 			          </div>
 			          <div class="tab-pane" id="tab-2">
 			            <div class="row">
-			            	<div class="col-lg-1"></div>
-							<div class="col-lg-5 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+							<div class="col-lg-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
 								<h3>
 								<a href="https://brunch.co.kr/@jachuisolo/2" target="_blank"  style="color: black">
 								좋은 집을 찾는 5가지 방법</a>
@@ -271,22 +268,19 @@
 									최근 이사 갈 매물을 찾으며 좋은 집을 얻는 팁 아닌 팁(?)을 공유하고자 한다.
 									절대적인 것은 아니며, 집을 구하면서 도움이 되었던 방법이다.<br>
 									1. 살고 싶은 집의 특징을 적어보자.<br>
-									2. 오피스텔인가? 원룸인가?<br>
-									3. 자신이 감당 할 수 있는 가격 설정<br>
-									4. 지역/위치 선정<br>
-									5. 실물 확인..
+									2. 오피스텔인가? 원룸인가?..
 									<a href="https://brunch.co.kr/@jachuisolo/2" target="_blank">Read More</a>
 									</p>
 								<div class="col-lg-6 order-1 order-lg-2 text-center aos-init aos-animate"
 									data-aos="fade-up" data-aos-delay="200">
 									<img src="//t1.daumcdn.net/thumb/R1280x0/?fname=http://t1.daumcdn.net/brunch/service/user/2lnY/image/AA2kafa9J4zgWNiw-E6QB5YEFJs.jpg""
-										alt="" width="400">
+										alt="" width="500">
 								</div>
 							</div>
-							<div class="col-lg-5 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+							<div class="col-lg-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
 								<h3>
 								<a href="https://seoulitelab.tistory.com/entry/%EB%B6%80%EB%8F%99%EC%82%B0-%EC%A0%84%EB%AC%B8%EA%B0%80%EA%B0%80-%EC%95%8C%EB%A0%A4%EC%A3%BC%EB%8A%94-%EC%A7%91-%EA%B5%AC%ED%95%98%EA%B8%B0-%ED%8C%81" target="_blank" style="color: black">
-								부동산 전문가가 알려주는 집 구하기 팁</a>
+								전문가가 알려주는 집 구하기 팁</a>
 								</h3>
 								<p class="font-italic">마리텔에서 "부동산 전문가가 알려주는 집 구하기 팁"<br>
 								1. 내 예산을 솔직히 얘기하지 마라<br>
@@ -298,42 +292,40 @@
 								<div class="col-lg-6 order-1 order-lg-2 text-center aos-init aos-animate"
 									data-aos="fade-up" data-aos-delay="200">
 									<img src="https://t1.daumcdn.net/cfile/tistory/2623C641580496D004?original"
-										alt="" width="400">
+										alt="" width="500">
 								</div>
 							</div>
-							<div class="col-lg-1"></div>
 						</div>
 			          </div>
 			          <div class="tab-pane" id="tab-3">
 			            <div class="row">
-			            	<div class="col-lg-1"></div>
-							<div class="col-lg-5 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+							<div class="col-lg-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
 								<h3>
 								<a href="https://www.youtube.com/watch?v=ecJussct1s0" target="_blank"  style="color: black">
-								집구하기 팁 / 부동산가서 전세,월세,매매 집보기전 말해야할것들 [덕방아재]</a>
+								집구하기 팁<br>부동산가서 집보기전 말해야할것들</a>
 								</h3>
 								<p class="font-italic">부동산(공인중개사사무소)에 가셔서 집구하시는 분들께 
 									알려드리는 시간절약 집구하기 팁 입니다
 									인터넷이나 어플을 통하든
 									또는 예약없이 바로 부동산 중개업소에 방문을 하시든
 									부동산사무실에 꼭 이야기를 해주셔야 하는것들이 있습니다
-									간략하게 7가지로 추려보았구요!
+									간략하게 7가지로 추려보았구요!<br>
 									이 7가지를 우물쭈물 명확하게 말하지 못한다면
 									양질의 매물은 보지 못한채 미팅이 산으로 가서 
 									황금같이 귀한 시간낭비만 하시게 될겁니다!
 									꼭 미리 7가지 부동산에 이야기 하시고!
-									좋은 매물 보시고! 좋은 계약! 체결하시길 바랍니다!...
+									좋은 매물 보시고! 좋은 계약! 체결하시길 바랍니다!..
 									<a href="https://www.youtube.com/watch?v=ecJussct1s0" target="_blank">Read More</a>
 									</p>
 								<div class="col-lg-6 order-1 order-lg-2 text-center aos-init aos-animate"
 									data-aos="fade-up" data-aos-delay="200">
-									<iframe width="400" height="220" src="https://www.youtube.com/embed/ecJussct1s0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+									<iframe width="500" height="280" src="https://www.youtube.com/embed/ecJussct1s0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 								</div>
 							</div>
-							<div class="col-lg-5 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+							<div class="col-lg-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
 								<h3>
 								<a href="https://www.youtube.com/watch?v=iABPjzTjC8M" target="_blank" style="color: black">
-								초보 자취생들 위한 좋은집 구하는 꿀팁 전수!</a>
+								초보 자취생들 위한<br>좋은집 구하는 꿀팁 전수!</a>
 								</h3>
 								<p class="font-italic">*190113 초보 자취생들 위한 좋은집 구하는 꿀팁 전수!..<br>
 								 1. 위치 <br>
@@ -342,16 +334,14 @@
 								 4. 주방<br>
 								 5. 화장실<br>
 								 6. 공과금<br>
-								 7. 생활<br>
-								 8. 옵션 ... 
+								 7. 생활 ..
 								<a href="https://www.youtube.com/watch?v=iABPjzTjC8M" target="_blank">Read More</a>
 								</p>
 								<div class="col-lg-6 order-1 order-lg-2 text-center aos-init aos-animate"
 									data-aos="fade-up" data-aos-delay="200">
-									<iframe width="400" height="220" src="https://www.youtube.com/embed/iABPjzTjC8M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+									<iframe width="500" height="280" src="https://www.youtube.com/embed/iABPjzTjC8M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 								</div>
 							</div>
-							<div class="col-lg-1"></div>
 						</div>
 			          </div>
 			          <div class="tab-pane" id="tab-4">
