@@ -236,7 +236,7 @@
 								<div class="col-lg-6 order-1 order-lg-2 text-center aos-init aos-animate"
 									data-aos="fade-up" data-aos-delay="200">
 									<img src="https://imgnews.pstatic.net/image/005/2020/11/24/202011240010_11150924166232_1_20201124001120988.jpg?type=w647"
-										alt="" width="500">
+										alt="" width="500" height="301.56">
 								</div>
 							</div>
 							<div class="col-lg-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
@@ -274,7 +274,7 @@
 								<div class="col-lg-6 order-1 order-lg-2 text-center aos-init aos-animate"
 									data-aos="fade-up" data-aos-delay="200">
 									<img src="//t1.daumcdn.net/thumb/R1280x0/?fname=http://t1.daumcdn.net/brunch/service/user/2lnY/image/AA2kafa9J4zgWNiw-E6QB5YEFJs.jpg""
-										alt="" width="500">
+										alt="" width="500" height="277.3">
 								</div>
 							</div>
 							<div class="col-lg-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
