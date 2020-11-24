@@ -55,7 +55,6 @@ public class HouseController {
 	@RequestMapping(value = "/searchAptName", method = RequestMethod.GET)
 	public String goAptSearchAptName(Model model, @RequestParam Map<String, String> map, HttpServletRequest request) {
 		String aptName = request.getParameter("word");
-		System.out.println("아파트 이름 : " + aptName);
 		String spp = map.get("spp");
 		map.put("aptName", "%" + aptName + "%");
 		map.put("spp", spp != null ? spp : "10");// sizePerPage
@@ -145,7 +144,6 @@ public class HouseController {
 	@RequestMapping(value = "/searchDealBdName", method = RequestMethod.GET)
 	public String goResSearchDealDbName(Model model, @RequestParam Map<String, String> map, HttpServletRequest request) {
 		String resName = request.getParameter("word");
-		System.out.println("주택 이름(매매) : " + resName);
 		String spp = map.get("spp");
 		map.put("resName", "%" + resName + "%");
 		map.put("spp", spp != null ? spp : "10");// sizePerPage
@@ -166,7 +164,6 @@ public class HouseController {
 	public String goResSearchDealDongName(Model model, @RequestParam Map<String, String> map,
 			HttpServletRequest request) {
 		String dongName = request.getParameter("word");
-		System.out.println("동 주택 이름 : " + dongName);
 		String spp = map.get("spp");
 		map.put("dongName", "%" + dongName + "%");
 		map.put("spp", spp != null ? spp : "10");// sizePerPage
@@ -208,7 +205,6 @@ public class HouseController {
 	@RequestMapping(value = "/showRent", method = RequestMethod.GET)
 	public String showRent(HttpServletRequest request) {
 		int rentno = Integer.parseInt(request.getParameter("no"));
-		System.out.println("전월세 세부 정보 : " + rentno);
 		try {
 			ResidenceRentDto residenceRent = residenceDealService.showRent(rentno);
 			HttpSession session = request.getSession();
@@ -225,7 +221,6 @@ public class HouseController {
 	@RequestMapping(value = "/searchRentBdName", method = RequestMethod.GET)
 	public String goResSearchRentDbName(Model model, @RequestParam Map<String, String> map, HttpServletRequest request) {
 		String resName = request.getParameter("word");
-		System.out.println("주택 이름(전월세) : " + resName);
 		String spp = map.get("spp");
 		map.put("resName", "%" + resName + "%");
 		map.put("spp", spp != null ? spp : "10");// sizePerPage
@@ -246,7 +241,6 @@ public class HouseController {
 	public String goResSearchRentDongName(Model model, @RequestParam Map<String, String> map,
 			HttpServletRequest request) {
 		String dongName = request.getParameter("word");
-		System.out.println("동 주택 이름(전월세) : " + dongName);
 		String spp = map.get("spp");
 		map.put("dongName", "%" + dongName + "%");
 		map.put("spp", spp != null ? spp : "10");// sizePerPage
