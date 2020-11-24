@@ -70,7 +70,7 @@
                      <a href="${root}/notice/list?pg=1" id="announceBtn">Announcement</a>
                   </li>   
                   <li>
-                     <a href="index.html" id="qnaBtn">Q&A</a>
+                     <a href="qna.html" id="qnaBtn">Q&A</a>
                   </li>         
                   <c:choose>
                      <c:when test="${userDto.id eq null }">
